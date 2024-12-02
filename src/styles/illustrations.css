@@ -1,0 +1,44 @@
+/* Google brand colors */
+:root {
+  --google-blue: #4285F4;
+  --google-red: #EA4335;
+  --google-yellow: #FBBC04;
+  --google-green: #34A853;
+}
+
+/* Style primary paths in SVGs */
+.primary-color {
+  fill: var(--google-blue);
+}
+
+/* Style secondary paths */
+.secondary-color {
+  fill: var(--google-red);
+}
+
+/* Style accent paths */
+.accent-color {
+  fill: var(--google-yellow);
+}
+
+/* Style highlight paths */
+.highlight-color {
+  fill: var(--google-green);
+}
+
+/* Dark mode adjustments */
+.dark .primary-color {
+  fill: #8AB4F8;
+}
+
+.dark .secondary-color {
+  fill: #F28B82;
+}
+
+.dark .accent-color {
+  fill: #FDD663;
+}
+
+.dark .highlight-color {
+  fill: #81C995;
+} 

@@ -52,7 +52,88 @@ const TeamGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2.5rem;
   padding: 0.5rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 `;
+
+const ProfileImage = ({ member }) => {
+  const [imageError, setImageError] = useState(false);
+  const [randomSeed] = useState(Math.random()); // Random seed for this session
+  
+  const getInitials = (name) => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  const gradients = [
+    'linear-gradient(135deg, #4285F4, #34A853)',
+    'linear-gradient(135deg, #EA4335, #FBBC04)',
+    'linear-gradient(135deg, #34A853, #4285F4)',
+    'linear-gradient(135deg, #FBBC04, #EA4335)',
+    'linear-gradient(135deg, #4285F4, #EA4335)',
+    'linear-gradient(135deg, #34A853, #FBBC04)',
+    'linear-gradient(135deg, #EA4335, #34A853)',
+    'linear-gradient(135deg, #FBBC04, #4285F4)',
+    'linear-gradient(135deg, #4285F4, #83B9FF)',
+    'linear-gradient(135deg, #EA4335, #FF8A80)',
+    'linear-gradient(135deg, #34A853, #81C995)',
+    'linear-gradient(135deg, #FBBC04, #FFE082)',
+    'radial-gradient(circle at top left, #4285F4, #34A853)',
+    'radial-gradient(circle at top right, #EA4335, #FBBC04)',
+    'radial-gradient(circle at bottom left, #34A853, #4285F4)',
+    'radial-gradient(circle at bottom right, #FBBC04, #EA4335)',
+  ];
+
+  const getGradient = (name) => {
+    const index = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return gradients[index % gradients.length];
+  };
+
+  if (imageError) {
+    return (
+      <div
+        className="w-full h-full rounded-full flex items-center justify-center text-2xl font-semibold text-white
+                   shadow-lg transition-transform duration-300 ease-in-out
+                   group-hover:scale-105 relative overflow-hidden"
+        style={{
+          background: getGradient(member.name),
+        }}
+      >
+        <div className="relative z-10">
+          {getInitials(member.name)}
+        </div>
+        <div className="absolute inset-0 bg-black opacity-10 
+                       dark:opacity-20" 
+        />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={member.image}
+      alt={member.name}
+      onError={() => setImageError(true)}
+      className="w-full h-full rounded-full object-cover 
+                ring-2 ring-gray-200/50 dark:ring-gray-700/50
+                group-hover:ring-blue-500/50 dark:group-hover:ring-blue-400/50
+                transition-all duration-300"
+    />
+  );
+};
 
 const MemberCard = ({ member }) => {
   const mouseX = useMotionValue(0);
@@ -97,14 +178,7 @@ const MemberCard = ({ member }) => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-full rounded-full object-cover 
-                       ring-2 ring-gray-200/50 dark:ring-gray-700/50
-                       group-hover:ring-blue-500/50 dark:group-hover:ring-blue-400/50
-                       transition-all duration-300"
-            />
+            <ProfileImage member={member} />
             <div className="absolute inset-0 rounded-full 
                           bg-gradient-to-b from-transparent via-transparent to-black/10 
                           dark:to-black/20" 
@@ -311,7 +385,6 @@ const team = [
   {
     name: "Krishna Vineeth Gubba",
     role: "Coordinator",
-    location: "KALASALINGAM ACADEMY OF RESEARCH AND EDUCATION",
     image: "/images/team/krishna.jpg",
     socials: {
       linkedin: "#",
@@ -321,7 +394,6 @@ const team = [
   {
     name: "Poojith reddy Menthem",
     role: "Coordinator",
-    location: "INFOZIANT SECURITY",
     image: "/images/team/poojith.jpg",
     socials: {
       linkedin: "#",
@@ -329,9 +401,8 @@ const team = [
     }
   },
   {
-    name: "BALAJI .N",
+    name: "BALAJI N",
     role: "Coordinator",
-    location: "Infoziant Security",
     image: "/images/team/balaji.jpg",
     socials: {
       linkedin: "#",

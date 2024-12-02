@@ -5,6 +5,12 @@
 @tailwind utilities;
 
 :root {
+  /* Rainbow Button Colors */
+  --color-1: 0 100% 63%;
+  --color-2: 270 100% 63%;
+  --color-3: 210 100% 63%;
+  --color-4: 195 100% 63%;
+  --color-5: 90 100% 63%;
   /* Google Colors */
   --blue: #174EA6;
   --red: #A50E0E;
@@ -38,11 +44,58 @@
   --card-bg-dark: #303134;
   --border-color-dark: rgba(255,255,255,0.1);
 
-  --color-1: 0 100% 63%;
-  --color-2: 270 100% 63%;
-  --color-3: 210 100% 63%;
-  --color-4: 195 100% 63%;
-  --color-5: 90 100% 63%;
+
+
+  /* Theme Colors - Light */
+  --primary: #4285F4;
+  --primary-foreground: #FFFFFF;
+  --secondary: #EA4335;
+  --secondary-foreground: #FFFFFF;
+  --background: #FFFFFF;
+  --background-foreground: #202124;
+  --muted: #F8F9FA;
+  --muted-foreground: #5F6368;
+  --accent: #FBBC04;
+  --accent-foreground: #202124;
+}
+
+.dark {
+  /* Theme Colors - Dark */
+  --primary: #8AB4F8;
+  --primary-foreground: #202124;
+  --secondary: #F28B82;
+  --secondary-foreground: #202124;
+  --background: #202124;
+  --background-foreground: #FFFFFF;
+  --muted: #303134;
+  --muted-foreground: #9AA0A6;
+  --accent: #FDD663;
+  --accent-foreground: #202124;
+}
+
+/* Google Sans font */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('/fonts/GoogleSans-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Google Sans';
+  src: url('/fonts/GoogleSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Google Sans';
+  src: url('/fonts/GoogleSans-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 * {
@@ -55,7 +108,7 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 body.dark {

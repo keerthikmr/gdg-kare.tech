@@ -5,6 +5,7 @@ import Events from '../components/Events';
 import Team from '../components/Team';
 import Contact from '../components/Contact';
 import NotFound from '../components/NotFound';
+import JoinUs from '../components/JoinUs';
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact />,
+      },
+      {
+        path: 'join',
+        element: <JoinUs />,
       },
       {
         path: '*',

@@ -84,26 +84,24 @@ const LogoLink = styled(Link)`
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: ${props => props.isScrolled ? '0.25rem' : '0.75rem'};
-  transition: all 0.4s ease;
+  gap: ${props => props.isScrolled ? '0.75rem' : '0.75rem'};
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (max-width: 768px) {
+    gap: ${props => props.isScrolled ? '0.5rem' : '0.5rem'};
+  }
   
   &:hover {
-    .logo-text {
-      max-width: 200px;
-      opacity: 1;
-      transform: translateX(0);
-      transition-delay: 0.1s;
-      
-      .text-char {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+    gap: 0.75rem;
     
-    .logo-right {
-      transform: translateX(0);
-      opacity: 1;
-      transition-delay: 0.2s;
+    .logo-text {
+      @media (min-width: 769px) {
+        max-width: 300px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+        visibility: visible;
+      }
     }
   }
 `;
@@ -175,6 +173,32 @@ const NavLink = styled(Link)`
       color: var(--light-blue);
     }
   }
+  
+  &.button {
+    background: linear-gradient(135deg, var(--blue), var(--medium-blue));
+    color: white !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.25);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+    
+    .dark & {
+      color: white !important;
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
+      
+      &:hover {
+        box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+      }
+    }
+  }
 `;
 
 const NavBackground = styled(motion.div)`
@@ -216,30 +240,19 @@ const LogoText = styled(motion.div)`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  margin: 0 0.35rem;
+  margin: 0;
   overflow: hidden;
-  max-width: ${props => props.isScrolled ? '0' : '200px'};
+  max-width: ${props => props.isScrolled ? '0' : '325px'};
   opacity: ${props => props.isScrolled ? 0 : 1};
   transform: translateX(${props => props.isScrolled ? '-20px' : '0'});
-  transition: all 0.4s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  
-  .text-char {
-    display: inline-block;
-    transform: ${props => props.isScrolled ? 'translateY(100%)' : 'translateY(0)'};
-    opacity: ${props => props.isScrolled ? 0 : 1};
-    transition: transform 0.4s ease, opacity 0.3s ease;
-    
-    ${Array.from({ length: 8 }).map((_, i) => `
-      &:nth-child(${i + 1}) {
-        transition-delay: ${0.1 + i * 0.03}s;
-      }
-    `)}
-  }
-  
-  &:hover .text-char {
-    transform: translateY(0);
-    opacity: 1;
+  visibility: ${props => props.isScrolled ? 'hidden' : 'visible'};
+  pointer-events: ${props => props.isScrolled ? 'none' : 'auto'};
+
+  @media (max-width: 768px) {
+    display: ${props => props.isScrolled ? 'none' : 'flex'};
+    font-size: 1.25rem;
   }
   
   .dark & {
@@ -248,15 +261,37 @@ const LogoText = styled(motion.div)`
 `;
 
 const RightLogoWrapper = styled(motion.div)`
-  transition: all 0.4s ease;
-  transform: translateX(${props => props.isScrolled ? '-20px' : '0'});
-  opacity: ${props => props.isScrolled ? 0 : 1};
-  transition-delay: 0s;
-  
-  ${props => props.isScrolled && `
-    transform: translateX(-20px);
-    opacity: 0;
-  `}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 45px;
+  width: 45px;
+  height: 45px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 45px;
+    min-width: 45px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(${props => props.isScrolled ? '-20px' : '0'});
+    margin-left: ${props => props.isScrolled ? '0.25rem' : '0'};
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  ${LogoWrapper}:hover & {
+    @media (min-width: 769px) {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateX(0) !important;
+      width: 45px !important;
+      min-width: 45px !important;
+      margin-left: 0 !important;
+    }
+  }
 `;
 
 const Bracket = styled(motion.span)`
@@ -286,35 +321,29 @@ const GDGLogoRight = () => (
 );
 
 const ThemeToggle = styled(motion.button)`
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: var(--grey);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
   
   &:hover {
-    background: var(--light-grey);
+    background: var(--hover);
   }
 
-  .dark & {
-    color: var(--light-grey);
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
+  @media (max-width: 768px) {
+    margin-left: auto;
   }
 `;
 
 const TextReveal = ({ text, isScrolled }) => {
   return (
-    <motion.span
-      initial={{ opacity: isScrolled ? 0 : 1, y: isScrolled ? 10 : 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.5 }}
-    >
+    <motion.span>
       {text.split('').map((char, index) => (
         <motion.span
           key={index}
@@ -322,14 +351,36 @@ const TextReveal = ({ text, isScrolled }) => {
           style={{ 
             display: 'inline-block',
             whiteSpace: 'pre',
-            transform: isScrolled ? 'translateY(100%)' : 'translateY(0)',
-            opacity: isScrolled ? 0 : 1
+            transition: `
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.04}s, 
+              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.04}s
+            `
           }}
         >
           {char}
         </motion.span>
       ))}
     </motion.span>
+  );
+};
+
+const ResponsiveText = ({ isScrolled }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return (
+    <TextReveal 
+      text={isMobile ? "GDG KARE" : "GDG OnCampus KARE"} 
+      isScrolled={isScrolled} 
+    />
   );
 };
 
@@ -426,7 +477,10 @@ const Navbar = () => {
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              transition={{ 
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1]
+              }}
             >
               <GDGLogoLeft />
             </motion.div>
@@ -434,28 +488,10 @@ const Navbar = () => {
             <LogoText
               className="logo-text"
               isScrolled={isScrolled}
-              initial={{ opacity: 1, x: 0 }}
-              animate={{ 
-                opacity: isScrolled ? 0 : 1,
-                x: isScrolled ? '-20px' : '0'
-              }}
-              transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <Bracket
-                initial={{ opacity: 1, x: 0 }}
-                animate={{ opacity: isScrolled ? 0 : 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                [
-              </Bracket>
-              <TextReveal text="GDG KARE" isScrolled={isScrolled} />
-              <Bracket
-                initial={{ opacity: 1, x: 0 }}
-                animate={{ opacity: isScrolled ? 0 : 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                ]
-              </Bracket>
+              <Bracket>[</Bracket>
+              <ResponsiveText isScrolled={isScrolled} />
+              <Bracket>]</Bracket>
             </LogoText>
             
             <RightLogoWrapper
@@ -463,7 +499,11 @@ const Navbar = () => {
               isScrolled={isScrolled}
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              transition={{ 
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1],
+                delay: 0.2
+              }}
             >
               <GDGLogoRight />
             </RightLogoWrapper>
@@ -487,12 +527,13 @@ const Navbar = () => {
             { name: 'Home', path: '/' },
             { name: 'Events', path: '/events' },
             { name: 'Team', path: '/team' },
-            { name: 'Contact', path: '/contact' }
+            { name: 'Contact', path: '/contact' },
+            { name: 'Join Us', path: '/join', isButton: true , isJoin: true }
           ].map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
-              className={location.pathname === item.path ? 'active' : ''}
+              className={`${location.pathname === item.path ? 'active' : ''} ${item.isButton ? 'button' : ''}`}
               onClick={closeMenu}
               onMouseEnter={() => handleNavItemHover(item.path)}
               ref={el => itemRefs.current.set(item.path, el)}

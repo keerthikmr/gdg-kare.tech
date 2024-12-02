@@ -16,7 +16,7 @@ const HeroSection = styled.section`
 
 const Hero = () => {
   return (
-    <HeroSection className="bg-gradient-to-br from-light-blue to-light-green dark:from-blue/30 dark:to-green/30">
+    <HeroSection className="">
       <RetroGrid className="opacity-30 dark:opacity-20" />
       <div className="relative z-10 max-w-7xl mx-auto text-center">
         <motion.h1
@@ -25,7 +25,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="text-6xl font-bold text-blue dark:text-light-blue mb-6"
         >
-          Welcome to GDG KARE
+          Welcome to GDG on Campus KARE
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ const Hero = () => {
         >
           <RainbowButton
             onClick={() => {
-              console.log('Join Community clicked');
+              window.open('https://gdg.community.dev/gdg-on-campus-kalasalingam-academy-of-research-education-krishnankoil-india/', '_blank');
             }}
             className="text-lg font-medium"
           >

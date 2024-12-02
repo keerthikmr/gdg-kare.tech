@@ -1,6 +1,14 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaInstagram, FaDiscord } from 'react-icons/fa';
 import { useState } from 'react';
+import ContactIllustration from '../assets/undraw/contact.svg';
+import CommunityIllustration from '../assets/undraw/community.svg';
+import '../styles/illustrations.css';
+
+const ILLUSTRATIONS = {
+  community: "https://illustrations.popsy.co/white/group-discussion.svg",
+  contact: "https://illustrations.popsy.co/white/customer-support.svg"
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +16,8 @@ const Contact = () => {
     email: '',
     message: ''
   });
+
+  const [illustrationError, setIllustrationError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,8 +66,22 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-12 relative"
         >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="absolute -top-10 right-0 -z-10 w-96 h-96 opacity-5 pointer-events-none"
+          >
+            {/* <img 
+              src={ILLUSTRATIONS.community}
+              alt="Team Discussion"
+              className="w-full h-full object-contain"
+              onError={() => setIllustrationError(true)}
+            /> */}
+          </motion.div>
+          
           <h1 className="text-4xl font-bold text-gray-800 mb-4">Get in Touch</h1>
           <p className="text-gray-600">Have questions? We'd love to hear from you.</p>
         </motion.div>
@@ -68,8 +92,22 @@ const Contact = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-lg shadow-lg p-8"
+            className="bg-white rounded-lg shadow-lg p-8 relative overflow-hidden"
           >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="absolute -top-20 -right-20 w-48 h-48 opacity-5 pointer-events-none"
+            >
+              {/* <img 
+                src={ILLUSTRATIONS.contact}
+                alt="Customer Support"
+                className="w-full h-full object-contain"
+                onError={() => setIllustrationError(true)}
+              /> */}
+            </motion.div>
+            
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -127,8 +165,11 @@ const Contact = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white rounded-lg shadow-lg p-8"
+            className="bg-white rounded-lg shadow-lg p-8 relative overflow-hidden"
           >
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/5 rounded-full" />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-red-500/5 rounded-full" />
+            
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-800 mb-4">Contact Information</h2>
               <p className="text-gray-600 mb-4">
