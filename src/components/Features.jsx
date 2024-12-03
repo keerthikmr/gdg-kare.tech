@@ -27,10 +27,24 @@ const Title = styled(motion.h2)`
   text-align: center;
   font-size: 3rem;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--blue), var(--medium-blue));
+  background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+
   -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   -webkit-text-fill-color: transparent;
   font-weight: 600;
+
+  body.dark & {
+    background: linear-gradient(135deg, var(--light-blue), var(--medium-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  body:not(.dark) & {
+    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
 `;
 
 const Subtitle = styled(motion.p)`
@@ -247,7 +261,8 @@ const features = [
     color: "var(--light-blue)",
     iconColor: "var(--medium-blue)",
     darkBg: "rgba(66, 133, 244, 0.1)",
-    gradient: "linear-gradient(135deg, var(--light-blue), var(--medium-blue))"
+    gradient: "linear-gradient(135deg, var(--light-blue), var(--medium-blue))",
+    lbgradient: "linear-gradient(135deg, var(--blue), var(--medium-blue))"
   },
   {
     icon: FaUsers,
@@ -258,7 +273,8 @@ const features = [
     color: "var(--light-red)",
     iconColor: "var(--medium-red)",
     darkBg: "rgba(234, 67, 53, 0.1)",
-    gradient: "linear-gradient(135deg, var(--light-red), var(--medium-red))"
+    gradient: "linear-gradient(135deg, var(--light-red), var(--medium-red))",
+    lbgradient: "linear-gradient(135deg, var(--red), var(--medium-red))"
   },
   {
     icon: FaLightbulb,
@@ -269,7 +285,8 @@ const features = [
     color: "var(--light-yellow)",
     iconColor: "var(--yellow)",
     darkBg: "rgba(251, 188, 4, 0.1)",
-    gradient: "linear-gradient(135deg, var(--light-yellow), var(--yellow))"
+    gradient: "linear-gradient(135deg, var(--light-yellow), var(--yellow))",
+    lbgradient: "linear-gradient(135deg, var(--yellow), var(--yellow))"
   },
   {
     icon: FaRocket,
@@ -280,7 +297,8 @@ const features = [
     color: "var(--light-green)",
     iconColor: "var(--medium-green)",
     darkBg: "rgba(52, 168, 83, 0.1)",
-    gradient: "linear-gradient(135deg, var(--light-green), var(--medium-green))"
+    gradient: "linear-gradient(135deg, var(--light-green), var(--medium-green))",
+    lbgradient: "linear-gradient(135deg, var(--green), var(--medium-green))"
   }
 ];
 
@@ -359,11 +377,12 @@ const FeatureIcon = styled.div`
 `;
 
 const CardTitle = styled.h3`
-  color: var(--text-primary);
   font-size: ${props => props.isExpanded ? '2rem' : '1.5rem'};
   margin: 0.5rem 0;
-  background: ${props => props.gradient};
+  background: linear-gradient(135deg, var(--medium-blue), var(--blue));
   -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
   overflow: hidden;
@@ -371,16 +390,16 @@ const CardTitle = styled.h3`
   flex-shrink: 0;
   font-weight: 600;
   
-  @media (max-width: 768px) {
-    ${props => props.isExpanded ? `
-      font-size: 1.75rem;
-      text-align: left;
-      margin: 0 0 1rem 0;
-    ` : `
-      font-size: 1.25rem;
-      margin: 0;
-      text-align: left;
-    `}
+  body.dark & {
+    background: ${props => props.gradient};
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  body:not(.dark) & {
+    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 `;
 
