@@ -3,7 +3,7 @@
 <div align="center">
   <img src="public/GDG_logo.png" alt="GDSC Logo" width="200"/>
   
-  A modern, responsive website for Google Developer Student Clubs built with React and Emotion.
+  A modern, responsive website for Google Developer Groups On Campus KARE built with React and Emotion.
 </div>
 
 ## ✨ Features
