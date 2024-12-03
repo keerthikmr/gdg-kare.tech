@@ -1,7 +1,7 @@
 # GDSC Website
 
 <div align="center">
-  <img src="public/GDG_logo.png" alt="GDSC Logo" width="200"/>
+  <img src="public/GDG_Logo.png" alt="GDSC Logo" width="200"/>
   
   A modern, responsive website for Google Developer Groups On Campus KARE built with React and Emotion.
 </div>
