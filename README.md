@@ -1,6 +1,3 @@
-Here's a beautiful README.md for your project:
-
-```markdown
 # GDSC Website
 
 <div align="center">
@@ -270,6 +267,3 @@ const Title = styled(motion.h2)`
           foreground: 'var(--accent-foreground)',
         },
 ```
-
-
-The design system and color information is extracted from your CSS variables and Tailwind configuration. The features section is based on the components and functionality implemented in your Features, Team, and JoinUs components.
