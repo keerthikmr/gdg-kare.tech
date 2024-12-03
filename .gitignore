@@ -29,3 +29,4 @@ dist-ssr
 *.tar
 *.gz
 *.bz2
+temp.jsx
