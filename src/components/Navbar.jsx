@@ -114,11 +114,22 @@ const MenuButton = styled.button`
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.5rem;
+  transition: all 0.3s ease;
+  z-index: 1001;
   
   @media (max-width: 768px) {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
   }
   
   .dark & {
@@ -134,22 +145,30 @@ const NavLinks = styled.div`
   padding: 0.5rem;
   
   @media (max-width: 768px) {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
     background: var(--bg-primary);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transform: ${({ isOpen }) => isOpen ? 'translateY(0)' : 'translateY(-150%)'};
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: ${({ isDark }) => 
+      isDark 
+        ? 'rgba(17, 17, 17, 0.95)' 
+        : 'rgba(255, 255, 255, 0.95)'
+    };
+    transform: ${({ isOpen }) => isOpen ? 'translateX(0)' : 'translateX(100%)'};
     opacity: ${({ isOpen }) => isOpen ? 1 : 0};
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
     
     .dark & {
-      background: var(--bg-primary-dark);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      background: rgba(17, 17, 17, 0.95);
     }
   }
 `;
@@ -197,6 +216,26 @@ const NavLink = styled(Link)`
       &:hover {
         box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    text-align: center;
+    border-radius: 0.75rem;
+    
+    &:not(.button):hover {
+      background: ${({ isDark }) => 
+        isDark 
+          ? 'rgba(255, 255, 255, 0.1)' 
+          : 'rgba(0, 0, 0, 0.05)'
+      };
+    }
+    
+    &.button {
+      margin-top: 1rem;
     }
   }
 `;
@@ -511,11 +550,17 @@ const Navbar = () => {
         </LogoLink>
 
         <MenuButton onClick={toggleMenu}>
-          {isOpen ? <FaTimes /> : <FaBars />}
+          <motion.div
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </motion.div>
         </MenuButton>
 
         <NavLinks 
           isOpen={isOpen}
+          isDark={isDark}
           onMouseLeave={handleNavMouseLeave}
         >
           <NavBackground
