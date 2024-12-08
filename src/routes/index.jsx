@@ -1,15 +1,16 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Layout from '../components/Layout';
-import Home from '../components/Home';
-import Events from '../components/Events';
-import Team from '../components/Team';
-import Contact from '../components/Contact';
-import NotFound from '../components/NotFound';
-import JoinUs from '../components/JoinUs';
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "../components/Layout";
+import Home from "../components/Home";
+import Events from "../components/Events";
+import Team from "../components/Team";
+import Contact from "../components/Contact";
+import NotFound from "../components/NotFound";
+import JoinUs from "../components/JoinUs";
+import About from "../components/About";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
@@ -17,25 +18,29 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'events',
+        path: "events",
         element: <Events />,
       },
       {
-        path: 'team',
+        path: "team",
         element: <Team />,
       },
       {
-        path: 'contact',
+        path: "contact",
         element: <Contact />,
       },
       {
-        path: 'join',
+        path: "join",
         element: <JoinUs />,
       },
       {
-        path: '*',
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "*",
         element: <NotFound />,
       },
     ],
   },
-]); 
+]);
