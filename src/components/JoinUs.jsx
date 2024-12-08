@@ -35,6 +35,40 @@ const Title = styled(motion.h2)`
   font-weight: 600;
 `;
 
+const InstructionDiv = styled.div`
+  background: var(--bg-primary);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+
+  body.dark & {
+    background: var(--bg-secondary-dark);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+`;
+
+const LinkStyle = styled(Link)`
+  color: #0077cc;
+  text-decoration: underline;
+
+  &:hover {
+    color: #005fa3;
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: #66b3ff;
+
+    &:hover {
+      color: #3399ff;
+    }
+  }
+`;
+
 const Form = styled.form`
   background: var(--bg-primary);
   padding: 2.5rem;
@@ -260,6 +294,15 @@ const SubmitButton = styled(motion.button)`
   }
 `;
 
+const SubmitMessage = styled.div`
+  .success {
+    color: green;
+  }
+  .error {
+    color: red;
+  }
+`;
+
 const ErrorMessage = styled.div`
   color: var(--medium-red);
   font-size: 0.875rem;
@@ -430,6 +473,7 @@ const JoinUs = () => {
       new URL(string);
       return true;
     } catch (err) {
+      console.log(err.ErrorMessage);
       return false;
     }
   };
@@ -470,7 +514,7 @@ const JoinUs = () => {
     const [localPart, domain] = email.split("@");
 
     // Check if email has correct domain
-    if (!email.endsWith("@klu.ac.in")) {
+    if (domain !== "klu.ac.in") {
       setEmailError("Please use your KLU email address (@klu.ac.in)");
       return false;
     }
@@ -622,9 +666,9 @@ const JoinUs = () => {
               />
               <h2>Application Submitted! 🎉</h2>
               <p>
-                Thank you for applying to GDG KARE. We've received your
-                application and will review it carefully. You'll hear back from
-                us soon about the next steps.
+                Thank you for applying to GDG KARE. We&apos;ve received your
+                application and will review it carefully. You&apos;ll hear back
+                from us soon about the next steps.
               </p>
               <Link to="/" className="home-button">
                 <svg
@@ -659,18 +703,16 @@ const JoinUs = () => {
           Join GDG KARE 2025
         </Title>
 
+        <InstructionDiv className="">
+          Only Second and First years can apply. Put some thought into your
+          answers. We&apos;re excited to see what you bring to the table! Take a
+          moment to read about our chapter &nbsp;
+          <LinkStyle to="/about" className="text-blue-500">
+            here
+          </LinkStyle>
+        </InstructionDiv>
+
         <Form onSubmit={handleSubmit}>
-          {submitSuccess && (
-            <SubmitMessage className="success">
-              Application submitted successfully! We'll review it and get back
-              to you soon.
-            </SubmitMessage>
-          )}
-
-          {submitError && (
-            <SubmitMessage className="error">{submitError}</SubmitMessage>
-          )}
-
           <FormGroup>
             <Label>
               Name <RequiredIndicator>*</RequiredIndicator>
@@ -789,8 +831,6 @@ const JoinUs = () => {
                 <option value="">Select Year</option>
                 <option value="1">1st Year</option>
                 <option value="2">2nd Year</option>
-                <option value="3">3rd Year</option>
-                <option value="4">4th Year</option>
               </Select>
             </FormGroup>
 
@@ -946,6 +986,17 @@ const JoinUs = () => {
           >
             {isSubmitting ? "Submitting..." : "Submit Application"}
           </SubmitButton>
+
+          {submitSuccess && (
+            <SubmitMessage className="success">
+              Application submitted successfully! We&apos;ll review it and get
+              back to you soon.
+            </SubmitMessage>
+          )}
+
+          {submitError && (
+            <SubmitMessage className="error">{submitError}</SubmitMessage>
+          )}
         </Form>
       </Container>
     </JoinSection>
