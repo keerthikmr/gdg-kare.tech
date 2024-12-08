@@ -1,14 +1,12 @@
 import { cn } from "../lib/utils";
+import PropTypes from "prop-types";
 
-export function RetroGrid({
-  className,
-  angle = 65,
-}) {
+export function RetroGrid({ className, angle = 65 }) {
   return (
     <div
       className={cn(
         "pointer-events-none absolute size-full overflow-hidden opacity-50 [perspective:200px]",
-        className,
+        className
       )}
       style={{ "--grid-angle": `${angle}deg` }}
     >
@@ -31,3 +29,8 @@ export function RetroGrid({
     </div>
   );
 }
+
+RetroGrid.propTypes = {
+  angle: PropTypes.number,
+  className: PropTypes.string,
+};
