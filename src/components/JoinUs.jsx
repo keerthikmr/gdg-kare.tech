@@ -482,6 +482,11 @@ const JoinUs = () => {
       return false;
     }
 
+    if (!/^(9923|9924)\d*$/.test(localPart)) {
+      setEmailError('You can only be a first or second year student.');
+      return false;
+    }
+
     // Check if local part is exactly 12 digits (adjust this number if needed)
 
     setEmailError('');
