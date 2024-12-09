@@ -69,6 +69,12 @@ const LinkStyle = styled(Link)`
   }
 `;
 
+const CheckBoxDiv = styled.div`
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+`;
+
 const Form = styled.form`
   background: var(--bg-primary);
   padding: 2.5rem;
@@ -91,10 +97,9 @@ const FormGroup = styled.div`
 
 const Label = styled.label`
   display: block;
-  margin-bottom: 0.5rem;
+  // margin-bottom: 0.5rem;
   color: var(--text-primary);
   font-weight: 500;
-
   body.dark & {
     color: var(--text-primary-dark);
   }
@@ -841,6 +846,28 @@ const JoinUs = () => {
               <Input name="department" type="text" required />
             </FormGroup>
           </div>
+
+          <FormGroup id="no-club-check">
+            <Label>
+              To ensure opportunities for everyone, we require you to not be in
+              any other technical clubs/chapters in the campus
+              <RequiredIndicator>*</RequiredIndicator>
+            </Label>
+
+            <CheckBoxDiv>
+              <Input
+                id="checkNoClub"
+                name="checkNoClub"
+                type="checkbox"
+                required
+                style={{ width: "1rem" }}
+              />
+
+              <Label htmlFor="checkNoClub">
+                I am not in any other technical clubs
+              </Label>
+            </CheckBoxDiv>
+          </FormGroup>
 
           <FormGroup>
             <Label>
