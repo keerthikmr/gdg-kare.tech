@@ -1,8 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import styled from '@emotion/styled';
-import { RetroGrid } from './RetroGrid';
-import { RainbowButton } from './RainbowButton';
+import { motion } from "framer-motion";
+import styled from "@emotion/styled";
+import { RetroGrid } from "./RetroGrid";
+import { RainbowButton } from "./RainbowButton";
 
 const HeroSection = styled.section`
   min-height: 100vh;
@@ -42,7 +41,10 @@ const Hero = () => {
         >
           <RainbowButton
             onClick={() => {
-              window.open('https://gdg.community.dev/gdg-on-campus-kalasalingam-academy-of-research-education-krishnankoil-india/', '_blank');
+              window.open(
+                "https://gdg.community.dev/gdg-on-campus-kalasalingam-academy-of-research-education-krishnankoil-india/",
+                "_blank"
+              );
             }}
             className="text-lg font-medium"
           >

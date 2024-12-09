@@ -1,5 +1,5 @@
-import React from "react";
 import { cn } from "../lib/utils";
+import PropTypes from "prop-types";
 
 export function RainbowButton({ children, className, ...props }) {
   return (
@@ -16,7 +16,7 @@ export function RainbowButton({ children, className, ...props }) {
         // dark mode colors
         "dark:bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]",
 
-        className,
+        className
       )}
       {...props}
     >
@@ -24,3 +24,8 @@ export function RainbowButton({ children, className, ...props }) {
     </button>
   );
 }
+
+RainbowButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
