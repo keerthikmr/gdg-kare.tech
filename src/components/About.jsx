@@ -350,9 +350,15 @@ const About = () => {
           className="text-lg text-gray-700 dark:text-gray-300 mb-6"
         >
           If you have questions about our chapter or are unsure if you’d be the
-          right fit for us, feel free to contact me, the organizer, at
-          9443634173. I’d love to hear from you before we potentially meet in
-          the interview.
+          right fit for us, feel free to contact me, the organizer, at&nbsp;
+          <a
+            href="mailto:gdsckare@klu.ac.in"
+            className="text-teal-600 hover:underline dark:text-teal-200"
+          >
+            keerthikumar.m10@gmail.com
+          </a>
+          . I’d love to hear from you before we potentially meet in the
+          interview.
         </motion.p>
 
         <motion.p
