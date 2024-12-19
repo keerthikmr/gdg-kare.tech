@@ -108,25 +108,26 @@ const Footer = () => {
     },
     {
       icon: FaLinkedin,
-      url: "https://www.linkedin.com/company/gdg-on-campus-kare/",
+      url: "https://www.linkedin.com/company/gdsc-kare",
       label: "LinkedIn",
     },
     {
       icon: FaInstagram,
-      url: "https://www.instagram.com/gdg_on_campus_kare/",
+      url: "https://www.instagram.com/gdg_oncampus_kare",
       label: "Instagram",
     },
     {
       icon: FaTwitter,
-      url: "https://twitter.com/GDG_KARE",
+      url: "https://twitter.com/gdsckare",
       label: "Twitter",
     },
     {
       icon: FaYoutube,
-      url: "https://www.youtube.com/@gdgoncampuskare",
+      url: "https://www.youtube.com/@GDG_Oncampus_KARE",
       label: "YouTube",
     },
   ];
+  
 
   return (
     <FooterContainer isDark={isDark}>
