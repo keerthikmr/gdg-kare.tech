@@ -103,7 +103,7 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: FaWhatsapp,
-      url: "https://chat.whatsapp.com/JVIXnFXgNWN3mOoFBqYFKw",
+      url: "https://chat.whatsapp.com/EhaEKb9Hi2nLjtiyCGTQSM",
       label: "WhatsApp Community",
     },
     {
