@@ -764,7 +764,15 @@ const JoinUs = () => {
           moment to read about our chapter&nbsp;
           <LinkStyle to="/about" className="text-blue-500">
             here
-          </LinkStyle>
+          </LinkStyle
+          <p>
+            Don't forget to join our&nbsp;
+            <LinkStyle to="https://chat.whatsapp.com/EhaEKb9Hi2nLjtiyCGTQSM" className="text-blue-500">
+              WhatsApp group
+            </LinkStyle>
+            &nbsp;
+             for updates
+          </p>
         </InstructionDiv>
 
         <Form onSubmit={handleSubmit}>
