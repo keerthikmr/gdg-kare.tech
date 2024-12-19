@@ -422,6 +422,50 @@ const VerifyButton = styled(motion.button)`
   }
 `;
 
+const CheckBoxDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+
+  label {
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+`;
+
+const RolesList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+`;
+
+const RoleOption = styled.button`
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  border: 2px solid var(--blue);
+  background: ${props => props.selected ? 'var(--blue)' : 'transparent'};
+  color: ${props => props.selected ? 'white' : 'var(--blue)'};
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  opacity: ${props => props.disabled ? '0.5' : '1'};
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: ${props => props.selected ? 'var(--medium-blue)' : 'var(--blue-alpha)'};
+  }
+
+  body.dark & {
+    border-color: ${props => props.selected ? 'var(--blue)' : 'var(--text-secondary-dark)'};
+    color: ${props => props.selected ? 'white' : 'var(--text-primary-dark)'};
+    
+    &:hover:not(:disabled) {
+      background: ${props => props.selected ? 'var(--medium-blue)' : 'var(--blue-alpha-dark)'};
+    }
+  }
+`;
+
 const JoinUs = () => {
   const roles = [
     "Event Management",
@@ -447,6 +491,7 @@ const JoinUs = () => {
   const [isVerifying, setIsVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [verificationError, setVerificationError] = useState("");
+  const [selectedRoles, setSelectedRoles] = useState([]);
 
   const [isDarkTheme, setIsDarkTheme] = useState(() =>
     document.body.classList.contains("dark")
@@ -525,8 +570,8 @@ const JoinUs = () => {
       return false;
     }
 
-    if (!/^(9923|9924)\d*$/.test(localPart)) {
-      setEmailError("You can only be a first or second year student.");
+    if (!/^(9923)\d*$/.test(localPart)) {
+      setEmailError("You can only be a second year student.");
       return false;
     }
 
@@ -545,7 +590,7 @@ const JoinUs = () => {
     setVerificationError("");
 
     try {
-      const response = await fetch("http://localhost:3001/api/verify-email", {
+      const response = await fetch("https://api.gdg-kare.tech/api/verify-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -574,8 +619,25 @@ const JoinUs = () => {
     }
   };
 
+  const handleRoleToggle = (role) => {
+    setSelectedRoles(prev => {
+      if (prev.includes(role)) {
+        return prev.filter(r => r !== role);
+      }
+      if (prev.length >= 4) {
+        return prev;
+      }
+      return [...prev, role];
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (selectedRoles.length === 0) {
+      setError("Please select at least one role");
+      return;
+    }
 
     if (!validateEmailFormat(email)) {
       return;
@@ -605,15 +667,16 @@ const JoinUs = () => {
         resume_link: e.target.resume_link.value,
         year_of_study: e.target.year_of_study.value,
         department: e.target.department.value,
-        preferred_role: e.target.preferred_role.value,
+        preferred_role: JSON.stringify(selectedRoles),
         role_interest: e.target.role_interest.value,
         recruitment_reason: e.target.recruitment_reason.value,
         projects: projects,
         additional_info: e.target.additional_info.value || null,
+        self_video: e.target.self_video.value || null,
       };
 
       const response = await fetch(
-        "http://localhost:3001/api/submit-application",
+        "https://api.gdg-kare.tech/api/submit-application",
         {
           method: "POST",
           headers: {
@@ -700,13 +763,13 @@ const JoinUs = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Join GDG KARE 2025
+          Join GDG OnCampus KARE 2025
         </Title>
 
         <InstructionDiv className="">
-          Only Second and First years can apply. Put some thought into your
-          answers. We&apos;re excited to see what you bring to the table! Take a
-          moment to read about our chapter &nbsp;
+          <strong>Only Second years can apply.</strong> We're super excited to meet you and see your 
+          creative ideas! 🎉 Just be yourself and show us what makes you awesome! Take a
+          moment to read about our chapter&nbsp;
           <LinkStyle to="/about" className="text-blue-500">
             here
           </LinkStyle>
@@ -737,7 +800,7 @@ const JoinUs = () => {
                   name="email"
                   type="email"
                   required
-                  placeholder="991020304050@klu.ac.in"
+                  placeholder="99230304050@klu.ac.in"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -828,9 +891,7 @@ const JoinUs = () => {
                 Year of Study <RequiredIndicator>*</RequiredIndicator>
               </Label>
               <Select name="year_of_study" required>
-                <option value="">Select Year</option>
-                <option value="1">1st Year</option>
-                <option value="2">2nd Year</option>
+                <option value="2" selected disabled>2nd Year</option>
               </Select>
             </FormGroup>
 
@@ -844,16 +905,36 @@ const JoinUs = () => {
 
           <FormGroup>
             <Label>
-              Preferred Role <RequiredIndicator>*</RequiredIndicator>
+              Preferred Roles (Select 1-4) <RequiredIndicator>*</RequiredIndicator>
             </Label>
-            <Select name="preferred_role" required>
-              <option value="">Select Role</option>
+            <RolesList>
               {roles.map((role) => (
-                <option key={role} value={role}>
+                <RoleOption
+                  key={role}
+                  type="button"
+                  selected={selectedRoles.includes(role)}
+                  disabled={!selectedRoles.includes(role) && selectedRoles.length >= 4}
+                  onClick={() => handleRoleToggle(role)}
+                >
                   {role}
-                </option>
+                  {selectedRoles.includes(role) && (
+                    <span style={{ marginLeft: '0.5rem' }}>×</span>
+                  )}
+                </RoleOption>
               ))}
-            </Select>
+            </RolesList>
+            <div style={{ 
+              fontSize: "0.875rem", 
+              color: "var(--text-secondary)", 
+              marginTop: "0.5rem" 
+            }}>
+              {selectedRoles.length === 0 
+                ? "Select at least one role" 
+                : `${selectedRoles.length} of 4 roles selected`}
+            </div>
+            {selectedRoles.length === 0 && (
+              <ErrorMessage>At least one role is required</ErrorMessage>
+            )}
           </FormGroup>
 
           <FormGroup>
@@ -969,14 +1050,50 @@ const JoinUs = () => {
             />
           </FormGroup>
 
-          {/* <FormGroup>
-            <Label>Why I belong here (A self video explaining why you're a great fit)</Label>
+          <FormGroup>
+            <Label>
+              Why You'd Be a Great Addition{" "}
+              <span style={{ 
+                fontSize: "0.875rem", 
+                color: "var(--text-secondary)",
+                fontWeight: "normal"
+              }}>
+                (Optional: A self video explaining why you're a great fit)
+              </span>
+            </Label>
             <Input
-              name="personal_video"
-              placeholder="Google Drive/Dropbox link to video."
+              name="self_video"
+              placeholder="Google Drive/Dropbox link to your video"
               type="url"
             />
-          </FormGroup> */}
+            <div style={{ 
+              fontSize: "0.875rem", 
+              color: "var(--text-secondary)", 
+              marginTop: "0.5rem" 
+            }}>
+              Tip: Keep it under 2 minutes and be yourself!
+            </div>
+          </FormGroup>
+
+          <FormGroup id="no-club-check">
+            <Label>
+              To ensure opportunities for everyone, we require you to not be in
+              any other technical clubs/chapters in the campus
+              <RequiredIndicator>*</RequiredIndicator>
+            </Label>
+            <CheckBoxDiv>
+              <Input
+                id="checkNoClub"
+                name="checkNoClub"
+                type="checkbox"
+                required
+                style={{ width: "1rem" }}
+              />
+              <Label htmlFor="checkNoClub">
+                I am not in any other technical clubs
+              </Label>
+            </CheckBoxDiv>
+          </FormGroup>
 
           <SubmitButton
             whileHover={{ scale: 1.02 }}
