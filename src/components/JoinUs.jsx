@@ -648,14 +648,6 @@ const JoinUs = () => {
       return;
     }
 
-    if (projects.length === 0) {
-      setError("Please add at least one project");
-      document
-        .querySelector("#projects-section")
-        .scrollIntoView({ behavior: "smooth" });
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitError("");
 
@@ -967,15 +959,14 @@ const JoinUs = () => {
 
           <FormGroup id="projects-section">
             <Label>
-              Past Projects (Add up to 5 links){" "}
-              <RequiredIndicator>*</RequiredIndicator>
+              Past Projects (Optional - Add up to 5 links)
             </Label>
             <div style={{ marginBottom: "1rem" }}>
               {projects.length < 5 && (
                 <>
                   <ProjectInput
                     type="url"
-                    placeholder="Project URL"
+                    placeholder="Project URL (optional)"
                     value={currentProject}
                     onChange={(e) => {
                       setCurrentProject(e.target.value);
@@ -1035,7 +1026,7 @@ const JoinUs = () => {
               }}
             >
               {projects.length === 0
-                ? "Add at least one project link"
+                ? "Share your project links (optional)"
                 : `${projects.length} of 5 projects added`}
             </div>
           </FormGroup>
