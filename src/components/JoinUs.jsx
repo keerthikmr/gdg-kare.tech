@@ -683,7 +683,7 @@ const JoinUs = () => {
         name: e.target.name.value,
         registration_number: e.target.registration_number.value,
         email: email,
-        resume_link: e.target.resume_link.value,
+        resume_link: e.target.resume_link.value || null,
         year_of_study: e.target.year_of_study.value,
         department: e.target.department.value,
         preferred_role: JSON.stringify(selectedRoles),
@@ -901,12 +901,12 @@ const JoinUs = () => {
 
             <FormGroup>
               <Label>
-                Resume Link <RequiredIndicator>*</RequiredIndicator>
+                Resume Link (Optional)
               </Label>
               <Input
                 name="resume_link"
                 type="url"
-                required
+                // required
                 placeholder="Google Drive/Dropbox link to your resume"
               />
             </FormGroup>
