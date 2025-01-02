@@ -88,10 +88,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Framer Motion
 - Emotion Team
 - Kalasalingam Academy of Research and Education
-```
+
+
 ## 📊 This Month's Contributions
 
+  
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/gdsckare/Website?style=flat-square)
+
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/gdsckare/Website?style=flat-square)
+
 ![GitHub contributors](https://img.shields.io/github/contributors/gdsckare/Website?style=flat-square)
+
 ![Alt](https://repobeats.axiom.co/api/embed/06a99abc18ca95982b5aba483a8a0c156007598f.svg "Repobeats analytics image")
