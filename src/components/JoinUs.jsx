@@ -550,7 +550,7 @@ const JoinUs = () => {
     setVerificationError("");
 
     try {
-      const response = await fetch("http://localhost:3001/api/verify-email", {
+      const response = await fetch("https://gdg-kare.tech/api/verify-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -618,7 +618,7 @@ const JoinUs = () => {
       };
 
       const response = await fetch(
-        "http://localhost:3001/api/submit-application",
+        "https://gdg-kare.tech/api/submit-application",
         {
           method: "POST",
           headers: {
