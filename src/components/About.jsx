@@ -24,7 +24,7 @@ const ListItem = styled(motion.li)`
   margin-bottom: 1rem;
   font-size: 1.1rem;
   line-height: 1.6;
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -100,7 +100,7 @@ const AboutSection = styled.section`
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,7 +181,7 @@ const IllustrationWrapper = styled(motion.div)`
   img {
     max-width: 100%;
     height: auto;
-    filter: ${props => props.isDark ? 'invert(1)' : 'none'};
+    filter: ${(props) => (props.isDark ? "invert(1)" : "none")};
     transition: filter 0.3s ease;
   }
 `;
@@ -232,7 +232,7 @@ const TopicCard = styled(GlassmorphicCard)`
   top: 20vh;
   height: fit-content;
   transition: opacity 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
@@ -258,7 +258,7 @@ const About = () => {
   return (
     <AboutSection>
       <DotPattern className="opacity-30 dark:opacity-20" />
-      
+
       <ContentContainer>
         {/* Introduction */}
         <SplitSection
@@ -278,8 +278,8 @@ const About = () => {
             </StyledParagraph>
             <StyledParagraph>
               <strong>Google Developer Groups on Campus KARE</strong> is a
-              student-run chapter dedicated to fostering a vibrant tech community at
-              KARE.
+              student-run chapter dedicated to fostering a vibrant tech
+              community at KARE.
             </StyledParagraph>
           </ContentSide>
         </SplitSection>
@@ -295,11 +295,13 @@ const About = () => {
             </StyledParagraph>
             <BlockContainer>
               <strong>GDGs</strong>
-              <List variants={{
-                visible: {
-                  transition: { staggerChildren: 0.2 },
-                },
-              }}>
+              <List
+                variants={{
+                  visible: {
+                    transition: { staggerChildren: 0.2 },
+                  },
+                }}
+              >
                 {[
                   "Regional communities like GDG Chennai, Bangalore, Mumbai etc.",
                   "Organized by professional developers and tech enthusiasts.",
@@ -310,11 +312,13 @@ const About = () => {
                 ))}
               </List>
               <strong>GDGs on Campus</strong>
-              <List variants={{
-                visible: {
-                  transition: { staggerChildren: 0.2 },
-                },
-              }}>
+              <List
+                variants={{
+                  visible: {
+                    transition: { staggerChildren: 0.2 },
+                  },
+                }}
+              >
                 {[
                   "Exclusive to a college or university.",
                   "Organized by students from the respective campus.",
@@ -326,11 +330,11 @@ const About = () => {
               </List>
             </BlockContainer>
             <StyledParagraph>
-              There are more than 500 Google Developer Groups on Campus chapters in
-              India and even more globally. Google has a GDG on Campus Program team
-              that coordinates all GDG on Campus chapters. We are part of GDG on
-              Campus India, which oversees all events and initiatives for chapters
-              across the country.
+              There are more than 500 Google Developer Groups on Campus chapters
+              in India and even more globally. Google has a GDG on Campus
+              Program team that coordinates all GDG on Campus chapters. We are
+              part of GDG on Campus India, which oversees all events and
+              initiatives for chapters across the country.
             </StyledParagraph>
           </ContentSide>
           <IllustrationWrapper isDark={isDark}>
@@ -344,21 +348,20 @@ const About = () => {
             <img src={teamidea} alt="Google's Role Illustration" />
           </IllustrationWrapper>
           <ContentSide>
-            <Heading variants={headingVariants}>
-              What does Google do?
-            </Heading>
+            <Heading variants={headingVariants}>What does Google do?</Heading>
             <StyledParagraph>
-              Google initiates campaigns like Study Jams, Solution Challenge, online
-              workshops, arcade games, and other surprise events. Google also
-              officially recognizes our chapter and provides support in terms of
-              speakers and networking opportunities. We have 53 Google Developer
-              Experts (GDEs) across India, whom we can invite to conduct workshops.
-              Google covers their travel and accommodation expenses!
+              Google initiates campaigns like Study Jams, Solution Challenge,
+              online workshops, arcade games, and other surprise events. Google
+              also officially recognizes our chapter and provides support in
+              terms of speakers and networking opportunities. We have 53 Google
+              Developer Experts (GDEs) across India, whom we can invite to
+              conduct workshops. Google covers their travel and accommodation
+              expenses!
             </StyledParagraph>
             <StyledParagraph>
-              Currently, we're in talks with Ashish Kumar Verma, a GDE from Delhi,
-              to conduct a workshop on Web Development using Advanced AI Concepts as
-              part of the Google Tech Winter Break Campaign.
+              Currently, we're in talks with Ashish Kumar Verma, a GDE from
+              Delhi, to conduct a workshop on Web Development using Advanced AI
+              Concepts as part of the Google Tech Winter Break Campaign.
             </StyledParagraph>
           </ContentSide>
         </SplitSection>
@@ -370,25 +373,23 @@ const About = () => {
               What's special about us?
             </Heading>
             <StyledParagraph>
-            Our chapter is all about building an amazing tech community on campus.
-            We offer a space where people can come together, share ideas, and
-            connect. We aim to bring dreamers and innovators together to create
-            something great. No great software is built alone!
-
+              Our chapter is all about building an amazing tech community on
+              campus. We offer a space where people can come together, share
+              ideas, and connect. We aim to bring dreamers and innovators
+              together to create something great. No great software is built
+              alone!
             </StyledParagraph>
             <StyledParagraph>
-            We have folks here who can always
-            teach you something and are never shy to learn things from you By
-            joining, you&apos;ll become part of one of the most active, cooperative,
-            and friendly groups on campus.
-
+              We have folks here who can always teach you something and are
+              never shy to learn things from you By joining, you&apos;ll become
+              part of one of the most active, cooperative, and friendly groups
+              on campus.
             </StyledParagraph>
             <StyledParagraph>
-            It&apos;s not about what we achieve by the end of our tenure—it&apos;s about
-            what we set in motion for the years to come. That&apos;s why your
-            application is so valuable to us.
+              It&apos;s not about what we achieve by the end of our
+              tenure—it&apos;s about what we set in motion for the years to
+              come. That&apos;s why your application is so valuable to us.
             </StyledParagraph>
-            
           </ContentSide>
           <IllustrationWrapper isDark={isDark}>
             <img src={special} alt="Special Features Illustration" />
@@ -405,28 +406,26 @@ const About = () => {
               What do we expect from you?
             </Heading>
             <StyledParagraph>
-            Don&apos;t expect to get tasks assigned to you. We thrive on our members
-            taking up and working on things that they believe will help the
-            chapter. 
-
+              Don&apos;t expect to get tasks assigned to you. We thrive on our
+              members taking up and working on things that they believe will
+              help the chapter.
             </StyledParagraph>
             <StyledParagraph>
-            The words of every member hold the same value. You&apos;ll be amazed at
-            how often you get to vote in a poll or contribute to the smallest
-            decisions.
-
+              The words of every member hold the same value. You&apos;ll be
+              amazed at how often you get to vote in a poll or contribute to the
+              smallest decisions.
             </StyledParagraph>
             <StyledParagraph>
-              Got a project idea? Let us know. Think we're doing something wrong?
-              Speak up! Have suggestions to improve the chapter? It's a crime to not
-              say them out loud.
+              Got a project idea? Let us know. Think we're doing something
+              wrong? Speak up! Have suggestions to improve the chapter? It's a
+              crime to not say them out loud.
             </StyledParagraph>
             <StyledParagraph>
-            There&apos;s no penalty for being inactive or not contributing. We don&apos;t
-            take anything from you, nor do we assume you owe us anything. It&apos;s all
-            about coming together to create something new we can share and be
-            proud of. Take responsibility, stick to it, and you&apos;ll be amazed at
-            what you can achieve.
+              There&apos;s no penalty for being inactive or not contributing. We
+              don&apos;t take anything from you, nor do we assume you owe us
+              anything. It&apos;s all about coming together to create something
+              new we can share and be proud of. Take responsibility, stick to
+              it, and you&apos;ll be amazed at what you can achieve.
             </StyledParagraph>
           </ContentSide>
         </SplitSection>
@@ -434,20 +433,18 @@ const About = () => {
         {/* Contact and Application - Updated */}
         <SplitSection>
           <ContentSide>
-            <Heading variants={headingVariants}>
-              Join Our Community
-            </Heading>
+            <Heading variants={headingVariants}>Join Our Community</Heading>
             <StyledParagraph>
-              If you have questions about our chapter or are unsure if you'd be the
-              right fit for us, feel free to reach out to us, at{" "}
+              If you have questions about our chapter or are unsure if you'd be
+              the right fit for us, feel free to reach out to us, at{" "}
               <a
-            href="mailto:gdsckare@klu.ac.in"
-              className="text-teal-600 hover:underline dark:text-teal-200"
-            >
-              gdsckare@klu.ac.in
-            </a>
-            {" "}we'd love to hear from you before we potentially meet in
-              the interview.
+                href="mailto:gdsckare@klu.ac.in"
+                className="text-teal-600 hover:underline dark:text-teal-200"
+              >
+                gdsckare@klu.ac.in
+              </a>{" "}
+              we'd love to hear from you before we potentially meet in the
+              interview.
             </StyledParagraph>
             <StyledParagraph>
               If you've read all the way here, a big salute to you! Thanks for
