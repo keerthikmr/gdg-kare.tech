@@ -30,3 +30,4 @@ dist-ssr
 *.gz
 *.bz2
 temp.jsx
+dist3/*

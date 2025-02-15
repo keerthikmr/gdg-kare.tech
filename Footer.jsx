@@ -127,7 +127,6 @@ const Footer = () => {
       label: "YouTube",
     },
   ];
-  
 
   return (
     <FooterContainer isDark={isDark}>
