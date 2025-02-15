@@ -69,12 +69,6 @@ const LinkStyle = styled(Link)`
   }
 `;
 
-const CheckBoxDiv = styled.div`
-  display: flex;
-  margin-top: 1rem;
-  gap: 1rem;
-`;
-
 const Form = styled.form`
   background: var(--bg-primary);
   padding: 2.5rem;
