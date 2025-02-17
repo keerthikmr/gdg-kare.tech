@@ -180,6 +180,7 @@ const SuccessMessage = styled(motion.div)`
 
   p {
     color: var(--text-secondary);
+    padding-bottom: 1rem;
   }
 
   body.dark & {
