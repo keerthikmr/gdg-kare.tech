@@ -240,7 +240,9 @@ const EventRegistration = () => {
       }
 
       setSubmitSuccess(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      e.target.reset();
     } catch (err) {
       setError(
         "Failed to submit registration. Please try again." + err.message || ""
