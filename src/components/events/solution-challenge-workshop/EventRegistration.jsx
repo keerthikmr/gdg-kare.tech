@@ -372,6 +372,17 @@ const EventRegistration = () => {
               Thank you for registering. We&apos;ll send you a confirmation
               email with further details.
             </p>
+            <p>Make sure to also RSVP here</p>
+            <RainbowButton
+              onClick={() => {
+                window.open(
+                  "https://gdg.community.dev/events/details/google-gdg-on-campus-kalasalingam-academy-of-research-education-krishnankoil-india-presents-next-gen-legacy-modernization-genai-kubernetes-and-google-cloud-in-action/",
+                  "_blank"
+                );
+              }}
+            >
+              RSVP
+            </RainbowButton>
           </SuccessMessage>
         )}
       </ContentContainer>
