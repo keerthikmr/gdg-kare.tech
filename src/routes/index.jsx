@@ -8,6 +8,7 @@ import NotFound from "../components/NotFound";
 import JoinUs from "../components/JoinUs";
 import About from "../components/About";
 import EventDescription from "../components/events/euphoria/EventDescription";
+import EventRegistration from "../components/events/solution-challenge-workshop/EventRegistration";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "euphoria-2025/register",
         element: <EventDescription />,
+      },
+      {
+        path: "solution-challenge-workshop",
+        element: <EventRegistration />,
       },
       {
         path: "*",
