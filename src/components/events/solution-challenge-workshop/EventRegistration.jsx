@@ -3,9 +3,11 @@ import styled from "@emotion/styled";
 import { DotPattern } from "../../DotPattern";
 import { useState } from "react";
 import { RainbowButton } from "../../RainbowButton";
+import { GlowButton } from "../../GradientGlow";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationSection = styled.section`
-  padding: 8rem 2rem;
+  padding: 4rem 2rem;
   background: var(--bg-primary);
   min-height: 100vh;
   position: relative;
@@ -27,6 +29,7 @@ const ContentContainer = styled.div`
   color: var(--text-primary);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4rem;
 
   @media (max-width: 768px) {
@@ -73,7 +76,7 @@ const Form = styled.form`
   padding: 2.5rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-
+  width: 100%;
   body.dark & {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -196,6 +199,8 @@ const ErrorMessage = styled.div`
 `;
 
 const EventRegistration = () => {
+  const navigate = useNavigate();
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -258,21 +263,27 @@ const EventRegistration = () => {
       <DotPattern className="opacity-30 dark:opacity-20" />
 
       <ContentContainer>
-        <div>
+        <div className="flex flex-col items-center justify-center">
           <Title
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Event Registration
+            Legacy Modernization Workshop
           </Title>
           <Subtitle
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-lg text-gray-800"
           >
-            Register for The Art of Prompting - A Prompt Engineering Challenge
+            Register for &quot;Next-Gen Legacy Modernization: GenAI, Kubernetes,
+            and Google Cloud in Action&quot;
           </Subtitle>
+
+          <GlowButton onClick={() => navigate("details")}>
+            Click to Learn More
+          </GlowButton>
         </div>
 
         <Form onSubmit={handleSubmit}>
@@ -333,8 +344,8 @@ const EventRegistration = () => {
               <Label>Department</Label>
               <Select name="department" required>
                 <option value="">Select your department</option>
-                <option value="CSE">Computer Science</option>
-                <option value="IT">Information Technology</option>
+                <option value="CSE">CSE</option>
+                <option value="IT">IT</option>
                 <option value="ECE">ECE</option>
                 <option value="EEE">EEE</option>
                 <option value="Other">Other</option>
