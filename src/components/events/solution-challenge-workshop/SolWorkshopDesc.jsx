@@ -10,7 +10,7 @@ import {
   Clock,
   MapPin,
   Linkedin,
-  BookOpen,
+  // BookOpen,
   List,
 } from "lucide-react";
 
@@ -236,31 +236,67 @@ const PrerequisitesList = styled(motion.ul)`
   }
 `;
 
-const MaterialsSection = styled(motion.div)`
+const AgendaList = styled(motion.ol)`
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  padding: 2rem;
+  padding: 2rem 3rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  counter-reset: list-counter;
 
-  h3 {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-primary);
+  li {
+    color: var(--text-secondary);
     margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+    list-style: none;
+    counter-increment: list-counter;
+
+    &:before {
+      content: counter(list-counter) ".";
+      color: var(--blue);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
   }
 
   body.dark & {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
 
-    h3 {
-      color: var(--text-primary-dark);
+    li {
+      color: var(--text-secondary-dark);
     }
   }
 `;
+
+// const MaterialsSection = styled(motion.div)`
+//   background: rgba(255, 255, 255, 0.1);
+//   backdrop-filter: blur(10px);
+//   border-radius: 15px;
+//   padding: 2rem;
+//   border: 1px solid rgba(255, 255, 255, 0.2);
+//   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+//   h3 {
+//     display: flex;
+//     align-items: center;
+//     gap: 0.5rem;
+//     color: var(--text-primary);
+//     margin-bottom: 1rem;
+//   }
+
+//   body.dark & {
+//     background: rgba(0, 0, 0, 0.2);
+//     border: 1px solid rgba(255, 255, 255, 0.1);
+
+//     h3 {
+//       color: var(--text-primary-dark);
+//     }
+//   }
+// `;
 
 const RSVPWidget = styled(motion.div)`
   background: linear-gradient(
@@ -421,12 +457,29 @@ const SolWorkshopDesc = () => {
             Prerequisites
           </h3>
           <li>Basic understanding of cloud computing concepts</li>
-          <li>Familiarity with containerization and Docker</li>
-          <li>Basic knowledge of AI/ML concepts</li>
           <li>Google Cloud Console access</li>
+          <li>Github Account</li>
         </PrerequisitesList>
 
-        <MaterialsSection
+        <AgendaList
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            <List className="w-6 h-6 text-blue-500" />
+            Agenda
+          </h3>
+          <li>Introduction to Next-Gen Modernization</li>
+          <li>The Role of GenAI in Cloud-Native Architecture</li>
+          <li>Kubernetes as the Foundation</li>
+          <li>Google Cloud for AI-Powered Modernization</li>
+          <li>Real-World Use Cases</li>
+          <li>Best Practices and Challenges</li>
+          <li>Q&A and Discussion</li>
+        </AgendaList>
+
+        {/* <MaterialsSection
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
@@ -438,7 +491,7 @@ const SolWorkshopDesc = () => {
           <p className="text-gray-600 dark:text-gray-300">
             Materials will be provided during the session. Stay tuned!
           </p>
-        </MaterialsSection>
+        </MaterialsSection> */}
 
         <RSVPWidget
           initial={{ opacity: 0, y: 20 }}
