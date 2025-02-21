@@ -205,6 +205,36 @@ const EventRegistration = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [error, setError] = useState("");
 
+  const closeRegistration = false;
+
+  if (closeRegistration) {
+    return (
+      <SuccessMessage
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <h3>🚪 Registrations Closed!</h3>
+        <p>
+          Thank you for your interest but unfortunately, registrations for the
+          workshop are closed! Please try approaching the venue (8505) directly.
+          We can&apos;t assure you a spot but we&apos;ll try our best to
+          accommodate you.
+        </p>
+        <p>You can still register for Solution Challenge here.</p>
+        <RainbowButton
+          onClick={() => {
+            window.open(
+              "https://vision.hack2skill.com/event/solutionschallenge2025/",
+              "_blank"
+            );
+          }}
+        >
+          Register for Solution Challenge
+        </RainbowButton>
+      </SuccessMessage>
+    );
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
