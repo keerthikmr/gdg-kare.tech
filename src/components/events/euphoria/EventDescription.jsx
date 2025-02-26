@@ -6,6 +6,7 @@ import { DotPattern } from "../../DotPattern";
 import { Calendar, Clock, MapPin, Trophy, Users } from "lucide-react";
 import registrationScreenshot from "@/assets/events/euphoria/registration-screenshot.png";
 import registratiionQr from "@/assets/events/euphoria/registration-qr.png";
+import registratiionQrWA from "@/assets/events/euphoria/registration-qr-wa.png";
 
 const EventSection = styled.section`
   padding: 8rem 2rem;
@@ -163,6 +164,17 @@ const QRCode = styled.div`
   mix-blend-mode: normal;
 `;
 
+const QRCodeWA = styled.div`
+  width: 200px;
+  height: 200px;
+  margin: 2rem auto;
+  background-image: url(${registratiionQrWA});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  mix-blend-mode: normal;
+`;
+
 const ScreenshotContainer = styled(motion.div)`
   max-width: 600px;
   margin: 2rem auto;
@@ -217,6 +229,27 @@ const EventDescription = () => {
           </EventSubtitle>
         </EventHeader>
 
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <QRCodeWA isDark={isDark} />
+          <RainbowButton
+            onClick={() => {
+              window.open(
+                "https://chat.whatsapp.com/JGGoRbDH0CW05xm1j2DPaK",
+                "_blank"
+              );
+            }}
+          >
+            Join WhatsApp Group
+          </RainbowButton>
+          <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+            Join to receive updates and ask questions
+          </p>
+        </motion.div>
         <InfoGrid>
           <InfoCard>
             <Calendar className="w-8 h-8 text-blue-500" />
@@ -247,20 +280,20 @@ const EventDescription = () => {
         >
           <h2 className="text-3xl font-bold text-center mb-8">
             <Trophy className="inline-block w-8 h-8 mr-2 text-yellow-500" />
-            Prizes Worth ₹7,000
+            Prizes Worth ₹10,000
           </h2>
           <PrizeSection>
             <PrizeCard>
               <h3>🥇 First Prize</h3>
-              <p>₹4,000</p>
+              <p>₹5,000</p>
             </PrizeCard>
             <PrizeCard>
               <h3>🥈 Second Prize</h3>
-              <p>₹2,000</p>
+              <p>₹3,000</p>
             </PrizeCard>
             <PrizeCard>
               <h3>🥉 Third Prize</h3>
-              <p>₹1,000</p>
+              <p>₹2,000</p>
             </PrizeCard>
           </PrizeSection>
         </motion.div>
