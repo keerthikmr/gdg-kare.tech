@@ -309,7 +309,7 @@ const EventDescription = () => {
             Scan the QR code or click the button below to register
           </p>
           <p className="mb-6">
-            Look for <HighlightedText>The Art of Prompting</HighlightedText> in
+            Look for <HighlightedText>Prompt Engineering</HighlightedText> in
             the event dropdown
           </p>
 
