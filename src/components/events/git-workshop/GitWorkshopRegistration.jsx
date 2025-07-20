@@ -393,93 +393,95 @@ const GitWorkshopRegistration = () => {
           </GlowButton>
         </div>
 
-        <Form onSubmit={handleSubmit}>
-          <FormGrid>
-            <FormGroup>
-              <Label>Full Name</Label>
-              <Input
-                name="full_name"
-                type="text"
-                required
-                placeholder="Enter your full name"
-              />
-            </FormGroup>
+        {!submitSuccess && (
+          <Form onSubmit={handleSubmit}>
+            <FormGrid>
+              <FormGroup>
+                <Label>Full Name</Label>
+                <Input
+                  name="full_name"
+                  type="text"
+                  required
+                  placeholder="Enter your full name"
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <Label>Register Number</Label>
-              <Input
-                name="register_number"
-                type="text"
-                required
-                placeholder="Enter your register number"
-              />
-            </FormGroup>
+              <FormGroup>
+                <Label>Register Number</Label>
+                <Input
+                  name="register_number"
+                  type="text"
+                  required
+                  placeholder="Enter your register number"
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <Label>Mobile Number</Label>
-              <Input
-                name="mobile_number"
-                type="tel"
-                required
-                placeholder="Enter your mobile number"
-                pattern="[0-9]{10}"
-              />
-            </FormGroup>
+              <FormGroup>
+                <Label>Mobile Number</Label>
+                <Input
+                  name="mobile_number"
+                  type="tel"
+                  required
+                  placeholder="Enter your mobile number"
+                  pattern="[0-9]{10}"
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <Label>Email</Label>
-              <Input
-                name="email"
-                type="email"
-                required
-                placeholder="Enter your email"
-              />
-            </FormGroup>
+              <FormGroup>
+                <Label>Email</Label>
+                <Input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="Enter your email"
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <Label>Year</Label>
-              <Select name="year" required>
-                <option value="">Select your year</option>
-                <option value="1">1st Year</option>
-                <option value="2">2nd Year</option>
-                <option value="3">3rd Year</option>
-                <option value="4">4th Year</option>
-              </Select>
-            </FormGroup>
+              <FormGroup>
+                <Label>Year</Label>
+                <Select name="year" required>
+                  <option value="">Select your year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                </Select>
+              </FormGroup>
 
-            <FormGroup>
-              <Label>Department</Label>
-              <Select name="department" required>
-                <option value="">Select your department</option>
-                <option value="CSE">CSE</option>
-                <option value="IT">IT</option>
-                <option value="ECE">ECE</option>
-                <option value="EEE">EEE</option>
-                <option value="Other">Other</option>
-              </Select>
-            </FormGroup>
+              <FormGroup>
+                <Label>Department</Label>
+                <Select name="department" required>
+                  <option value="">Select your department</option>
+                  <option value="CSE">CSE</option>
+                  <option value="IT">IT</option>
+                  <option value="ECE">ECE</option>
+                  <option value="EEE">EEE</option>
+                  <option value="Other">Other</option>
+                </Select>
+              </FormGroup>
 
-            <FormGroup>
-              <Label>Class/Slot</Label>
-              <Input
-                name="class"
-                type="text"
-                required
-                placeholder="Enter your class/slot"
-              />
-            </FormGroup>
-          </FormGrid>
+              <FormGroup>
+                <Label>Class/Slot</Label>
+                <Input
+                  name="class"
+                  type="text"
+                  required
+                  placeholder="Enter your class/slot"
+                />
+              </FormGroup>
+            </FormGrid>
 
-          <RainbowButton
-            type="submit"
-            disabled={isSubmitting}
-            style={{ width: "100%", marginTop: "1rem" }}
-          >
-            {isSubmitting ? "Registering..." : "Register Now"}
-          </RainbowButton>
+            <RainbowButton
+              type="submit"
+              disabled={isSubmitting}
+              style={{ width: "100%", marginTop: "1rem" }}
+            >
+              {isSubmitting ? "Registering..." : "Register Now"}
+            </RainbowButton>
 
-          {error && <ErrorMessage>{error}</ErrorMessage>}
-        </Form>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
+          </Form>
+        )}
 
         {submitSuccess && (
           <SuccessMessage
