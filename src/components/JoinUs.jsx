@@ -140,10 +140,21 @@ const Select = styled.select`
   transition: all 0.3s ease;
   cursor: pointer;
 
+  option {
+    background: white;
+    color: #333;
+    padding: 0.5rem;
+  }
+
   body.dark & {
     background: var(--bg-secondary-dark);
     border-color: var(--text-secondary-dark);
     color: var(--text-primary-dark);
+
+    option {
+      background: #2a2a2a;
+      color: #e0e0e0;
+    }
 
     &:focus {
       border-color: var(--medium-blue);

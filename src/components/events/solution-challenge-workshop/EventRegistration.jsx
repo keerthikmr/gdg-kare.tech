@@ -148,6 +148,12 @@ const Select = styled.select`
   transition: all 0.3s ease;
   cursor: pointer;
 
+  option {
+    background: white;
+    color: #333;
+    padding: 0.5rem;
+  }
+
   &:focus {
     outline: none;
     border-color: var(--medium-blue);
@@ -158,6 +164,11 @@ const Select = styled.select`
     background: rgba(0, 0, 0, 0.2);
     border-color: rgba(255, 255, 255, 0.1);
     color: var(--text-primary-dark);
+
+    option {
+      background: #2a2a2a;
+      color: #e0e0e0;
+    }
 
     &:focus {
       border-color: var(--medium-blue);
