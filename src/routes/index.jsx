@@ -10,6 +10,8 @@ import About from "../components/About";
 import EventDescription from "../components/events/euphoria/EventDescription";
 import EventRegistration from "../components/events/solution-challenge-workshop/EventRegistration";
 import SolWorkshopDesc from "../components/events/solution-challenge-workshop/SolWorkshopDesc";
+import GitWorkshopDesc from "../components/events/git-workshop/GitWorkshopDesc";
+import GitWorkshopRegistration from "../components/events/git-workshop/GitWorkshopRegistration";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +53,14 @@ export const router = createBrowserRouter([
       {
         path: "solution-challenge-workshop/details",
         element: <SolWorkshopDesc />,
+      },
+      {
+        path: "git-workshop",
+        element: <GitWorkshopDesc />,
+      },
+      {
+        path: "git-workshop/register",
+        element: <GitWorkshopRegistration />,
       },
       {
         path: "*",
