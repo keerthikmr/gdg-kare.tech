@@ -292,21 +292,10 @@ const GitWorkshopRegistration = () => {
         <h3>🚪 Registrations Closed!</h3>
         <p>
           Thank you for your interest but unfortunately, registrations for the
-          workshop are closed! Please try approaching the venue (8505) directly.
+          workshop are closed! Please try approaching the venue (8301) directly.
           We can&apos;t assure you a spot but we&apos;ll try our best to
           accommodate you.
         </p>
-        <p>You can still register for Solution Challenge here.</p>
-        <RainbowButton
-          onClick={() => {
-            window.open(
-              "https://vision.hack2skill.com/event/solutionschallenge2025/",
-              "_blank"
-            );
-          }}
-        >
-          Register for Solution Challenge
-        </RainbowButton>
       </SuccessMessage>
     );
   }
