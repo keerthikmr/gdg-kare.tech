@@ -324,25 +324,38 @@ const NlpWorkshopRegistration = () => {
     setIsSubmitting(true);
     setError("");
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-
     try {
+      const formData = {
+        name: e.target.full_name.value,
+        registration_number: e.target.register_number.value,
+        email: e.target.email.value,
+        year_of_study: e.target.year.value,
+        department: e.target.department.value,
+        class: e.target.class.value,
+        mobile_number: e.target.mobile_number.value,
+      };
       const response = await fetch("/api/nlp-workshop-register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error("Invalid server response");
+      }
+
       if (!response.ok) {
-        throw new Error("Failed to submit registration");
+        throw new Error(data?.error || "Unknown error occurred");
       }
 
       setSubmitSuccess(true);
 
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      window.scrollTo({ top: SuccessMessage.offsetTop, behavior: "smooth" });
       e.target.reset();
     } catch (err) {
       setError(
