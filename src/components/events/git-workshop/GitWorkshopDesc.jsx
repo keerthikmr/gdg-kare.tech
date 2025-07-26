@@ -218,6 +218,7 @@ const PrerequisitesList = styled(motion.ul)`
     margin-bottom: 1rem;
     position: relative;
     padding-left: 1.5rem;
+    list-style: none;
 
     &:before {
       content: "•";
