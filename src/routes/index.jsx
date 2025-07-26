@@ -12,6 +12,8 @@ import EventRegistration from "../components/events/solution-challenge-workshop/
 import SolWorkshopDesc from "../components/events/solution-challenge-workshop/SolWorkshopDesc";
 import GitWorkshopDesc from "../components/events/git-workshop/GitWorkshopDesc";
 import GitWorkshopRegistration from "../components/events/git-workshop/GitWorkshopRegistration";
+import NlpWorkshopDesc from "../components/events/nlp-workshop/NlpWorkshopDesc";
+import NlpWorkshopRegistration from "../components/events/nlp-workshop/NlpWorkshopRegistration";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ export const router = createBrowserRouter([
       {
         path: "git-workshop/register",
         element: <GitWorkshopRegistration />,
+      },
+      {
+        path: "nlp-workshop",
+        element: <NlpWorkshopDesc />,
+      },
+      {
+        path: "nlp-workshop/register",
+        element: <NlpWorkshopRegistration />,
       },
       {
         path: "*",
