@@ -236,6 +236,70 @@ const NavLink = styled(Link)`
   }
 `;
 
+const ExternalLink = styled.a`
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  position: relative;
+  z-index: 2;
+
+  &.active {
+    color: var(--medium-blue);
+  }
+
+  .dark & {
+    color: white;
+
+    &.active {
+      color: var(--light-blue);
+    }
+  }
+
+  &.button {
+    background: linear-gradient(135deg, var(--blue), var(--medium-blue));
+    color: white !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.25);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    .dark & {
+      color: white !important;
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
+
+      &:hover {
+        box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+      }
+    }
+  }
+
+  @media (max-width: 1140px) {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    text-align: center;
+    border-radius: 0.75rem;
+
+    &:not(.button):hover {
+      background: ${({ isDark }) =>
+        isDark ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.05)"};
+    }
+
+    &.button {
+      margin-top: 1rem;
+    }
+  }
+`;
+
 const NavBackground = styled(motion.div)`
   position: absolute;
   top: 4px;
@@ -411,9 +475,7 @@ const TextReveal = ({ text }) => {
             display: "inline-block",
             whiteSpace: "pre",
             transition: `
-              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${
-                index * 0.04
-              }s, 
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.04}s,
               opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.04}s
             `,
           }}
@@ -575,21 +637,44 @@ const Navbar = () => {
             { name: "Events", path: "/events" },
             { name: "Team", path: "/team" },
             { name: "Contact", path: "/contact" },
-            { name: "Join Us", path: "/join", isButton: true, isJoin: true },
-          ].map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={`${location.pathname === item.path ? "active" : ""} ${
-                item.isButton ? "button" : ""
-              }`}
-              onClick={closeMenu}
-              onMouseEnter={() => handleNavItemHover(item.path)}
-              ref={(el) => itemRefs.current.set(item.path, el)}
-            >
-              {item.name}
-            </NavLink>
-          ))}
+            {
+              name: "Join Us",
+              path: "https://chat.whatsapp.com/EhaEKb9Hi2nLjtiyCGTQSM",
+              isButton: true,
+              isJoin: true,
+              isExternal: true,
+            },
+          ].map((item) =>
+            item.isExternal ? (
+              <ExternalLink
+                key={item.path}
+                href={item.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${
+                  location.pathname === item.path ? "active" : ""
+                } ${item.isButton ? "button" : ""}`}
+                onClick={closeMenu}
+                onMouseEnter={() => handleNavItemHover(item.path)}
+                ref={(el) => itemRefs.current.set(item.path, el)}
+              >
+                {item.name}
+              </ExternalLink>
+            ) : (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={`${
+                  location.pathname === item.path ? "active" : ""
+                } ${item.isButton ? "button" : ""}`}
+                onClick={closeMenu}
+                onMouseEnter={() => handleNavItemHover(item.path)}
+                ref={(el) => itemRefs.current.set(item.path, el)}
+              >
+                {item.name}
+              </NavLink>
+            )
+          )}
           <ThemeToggle
             onClick={() => {
               setIsDark(!isDark);
