@@ -18,6 +18,7 @@ module.exports = async (req, res) => {
       year_of_study,
       department,
       class: classSlot,
+      cgpa,
       mobile_number,
     } = req.body;
 
@@ -28,6 +29,7 @@ module.exports = async (req, res) => {
       !year_of_study ||
       !department ||
       !classSlot ||
+      !cgpa ||
       !mobile_number
     ) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -43,6 +45,7 @@ module.exports = async (req, res) => {
           year_of_study,
           department,
           class: classSlot,
+          cgpa,
           mobile_number,
         },
       ])
