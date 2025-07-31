@@ -400,6 +400,27 @@ const GitWorkshopDesc = () => {
           </EventCaption>
         </EventHeader>
 
+        <RSVPWidget
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h3>Registrations closed!</h3>
+          <p>
+            We{"'"}re sorry. We{"'"}ve reached the maximum capacity for this
+            workshop. Join our community for latest updates on future events
+          </p>
+          <PulseButton
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() =>
+              window.open("https://linktr.ee/GDG_on_Campus_Kare", "_blank")
+            }
+          >
+            Join us
+          </PulseButton>
+        </RSVPWidget>
+
         <InfoGrid>
           <InfoCard>
             <Calendar className="w-8 h-8 text-blue-500" />
@@ -542,27 +563,6 @@ const GitWorkshopDesc = () => {
             Materials will be provided in the WhatsApp Group. Stay tuned!
           </p>
         </MaterialsSection>
-
-        <RSVPWidget
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <h3>Registrations closed!</h3>
-          <p>
-            We{"'"}re sorry. We{"'"}ve reached the maximum capacity for this
-            workshop. Join our community for latest updates on future events
-          </p>
-          <PulseButton
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() =>
-              window.open("https://linktr.ee/GDG_on_Campus_Kare", "_blank")
-            }
-          >
-            Join us
-          </PulseButton>
-        </RSVPWidget>
 
         {/* <RainbowButton
           onClick={() => {
