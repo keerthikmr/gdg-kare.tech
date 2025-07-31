@@ -444,6 +444,25 @@ const NlpWorkshopRegistration = () => {
           </GlowButton>
         </div>
 
+        <InfoWidget
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <h3>Note</h3>
+          <p>
+            Registration does not guarantee a spot in the workshop. Keep an eye
+            on your inbox, we{"'"}ll send you a confirmation mail if you get
+            shortlisted. You can then proceed to pay Rs.300/- and confirm your
+            spot.
+          </p>
+
+          <p>
+            3rd year students will also have to attend a preparatory sessions on
+            <b> 11, 12 and 13th August</b> from 5 PM - 6PM.
+          </p>
+        </InfoWidget>
+
         {!submitSuccess && (
           <Form onSubmit={handleSubmit}>
             <FormGrid>
@@ -543,25 +562,6 @@ const NlpWorkshopRegistration = () => {
             {error && <ErrorMessage>{error}</ErrorMessage>}
           </Form>
         )}
-
-        <InfoWidget
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <h3>Note</h3>
-          <p>
-            Registration does not guarantee a spot in the workshop. Keep an eye
-            on your inbox, we{"'"}ll send you a confirmation mail if you get
-            shortlisted. You can then proceed to pay Rs.300/- and confirm your
-            spot.
-          </p>
-
-          <p>
-            3rd year students will also have to attend a preparatory sessions on
-            <b> 11, 12 and 13th August</b> from 5 PM - 6PM.
-          </p>
-        </InfoWidget>
 
         {submitSuccess && (
           <SuccessMessage
