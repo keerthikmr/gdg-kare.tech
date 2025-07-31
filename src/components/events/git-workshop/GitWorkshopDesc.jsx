@@ -525,7 +525,7 @@ const GitWorkshopDesc = () => {
             <h3>Keerthi Kumar</h3>
             <p>Organizer, GDG - KARE</p>
             <LinkedInButton
-              href="https://in.linkedin.com/in/keerthikumar10"
+              href="https://www.linkedin.com/in/keerthi-kumar10/"
               target="_blank"
               rel="noopener noreferrer"
             >
