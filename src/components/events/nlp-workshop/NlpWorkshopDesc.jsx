@@ -14,7 +14,7 @@ import {
   BookOpen,
   List,
 } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+// import { FaWhatsapp } from "react-icons/fa";
 
 const EventSection = styled.section`
   min-height: 100vh;
@@ -279,15 +279,15 @@ const LinkedInButton = styled(motion.a)`
 `;
 
 const WidgetsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr;
+  // gap: 2rem;
   margin-top: 2rem;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+  // @media (max-width: 768px) {
+  //   grid-template-columns: 1fr;
+  //   gap: 1rem;
+  // }
 `;
 
 const RSVPWidget = styled(motion.div)`
@@ -319,38 +319,38 @@ const RSVPWidget = styled(motion.div)`
   }
 `;
 
-const WhatsAppWidget = styled(motion.div)`
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05)
-  );
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+// const WhatsAppWidget = styled(motion.div)`
+//   background: linear-gradient(
+//     135deg,
+//     rgba(255, 255, 255, 0.1),
+//     rgba(255, 255, 255, 0.05)
+//   );
+//   backdrop-filter: blur(10px);
+//   border-radius: 12px;
+//   padding: 1.5rem;
+//   text-align: center;
+//   border: 1px solid rgba(255, 255, 255, 0.2);
+//   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: space-between;
 
-  p {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-  }
+//   p {
+//     font-size: 1.1rem;
+//     margin-bottom: 1rem;
+//     color: var(--text-primary);
+//   }
 
-  body.dark & {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-    border-color: rgba(255, 255, 255, 0.1);
+//   body.dark & {
+//     background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+//     border-color: rgba(255, 255, 255, 0.1);
 
-    p {
-      color: var(--text-primary-dark);
-    }
-  }
-`;
+//     p {
+//       color: var(--text-primary-dark);
+//     }
+//   }
+// `;
 
 const PulseButton = styled(motion.button)`
   background-color: #1a73e8; /* Google's primary blue */
@@ -392,49 +392,49 @@ const PulseButton = styled(motion.button)`
   }
 `;
 
-const WhatsAppButton = styled(motion.button)`
-  background-color: #25d366; /* WhatsApp green */
-  color: white;
-  border: none;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+// const WhatsAppButton = styled(motion.button)`
+//   background-color: #25d366; /* WhatsApp green */
+//   color: white;
+//   border: none;
+//   padding: 0.75rem 2rem;
+//   border-radius: 8px;
+//   font-weight: 600;
+//   font-size: 1.1rem;
+//   cursor: pointer;
+//   transition: all 0.2s ease-in-out;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 0.5rem;
 
-  &:hover {
-    background-color: #128c7e; /* Darker WhatsApp green */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-1px);
-  }
+//   &:hover {
+//     background-color: #128c7e; /* Darker WhatsApp green */
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+//     transform: translateY(-1px);
+//   }
 
-  &:active {
-    background-color: #075e54; /* Even darker green */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transform: translateY(0);
-  }
+//   &:active {
+//     background-color: #075e54; /* Even darker green */
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+//     transform: translateY(0);
+//   }
 
-  /* Dark mode styles */
-  body.dark & {
-    background-color: #25d366;
-    color: white;
+//   /* Dark mode styles */
+//   body.dark & {
+//     background-color: #25d366;
+//     color: white;
 
-    &:hover {
-      background-color: #128c7e;
-      box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
-    }
+//     &:hover {
+//       background-color: #128c7e;
+//       box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+//     }
 
-    &:active {
-      background-color: #075e54;
-    }
-  }
-`;
+//     &:active {
+//       background-color: #075e54;
+//     }
+//   }
+// `;
 
 const PrerequisitesList = styled(motion.div)`
   background: linear-gradient(
@@ -783,7 +783,7 @@ const NlpWorkshopDesc = () => {
               RSVP
             </PulseButton>
           </RSVPWidget>
-
+          {/* 
           <WhatsAppWidget
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -803,7 +803,7 @@ const NlpWorkshopDesc = () => {
               <FaWhatsapp size={20} />
               Join WhatsApp
             </WhatsAppButton>
-          </WhatsAppWidget>
+          </WhatsAppWidget> */}
         </WidgetsContainer>
 
         <RainbowButton
