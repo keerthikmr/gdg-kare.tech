@@ -5,7 +5,7 @@ import { useState } from "react";
 import { RainbowButton } from "../../RainbowButton";
 import { GlowButton } from "../../GradientGlow";
 import { useNavigate } from "react-router-dom";
-import { FaWhatsapp } from "react-icons/fa";
+// import { FaWhatsapp } from "react-icons/fa";
 
 const RegistrationSection = styled.section`
   min-height: 100vh;
@@ -235,7 +235,7 @@ const ErrorMessage = styled.div`
   margin-top: 0.25rem;
 `;
 
-const WhatsAppWidget = styled(motion.div)`
+const InfoWidget = styled(motion.div)`
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.1),
@@ -249,9 +249,16 @@ const WhatsAppWidget = styled(motion.div)`
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   margin-top: 2rem;
 
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
   p {
     font-size: 1.1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     color: var(--text-primary);
   }
 
@@ -259,56 +266,90 @@ const WhatsAppWidget = styled(motion.div)`
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
     border-color: rgba(255, 255, 255, 0.1);
 
+    h3 {
+      color: var(--text-primary-dark);
+    }
+
     p {
       color: var(--text-primary-dark);
     }
   }
 `;
 
-const WhatsAppButton = styled(motion.button)`
-  background-color: #25d366; /* WhatsApp green */
-  color: white;
-  border: none;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
+// const WhatsAppWidget = styled(motion.div)`
+//   background: linear-gradient(
+//     135deg,
+//     rgba(255, 255, 255, 0.1),
+//     rgba(255, 255, 255, 0.05)
+//   );
+//   backdrop-filter: blur(10px);
+//   border-radius: 12px;
+//   padding: 1.5rem;
+//   text-align: center;
+//   border: 1px solid rgba(255, 255, 255, 0.2);
+//   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+//   margin-top: 2rem;
 
-  &:hover {
-    background-color: #128c7e; /* Darker WhatsApp green */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-1px);
-  }
+//   p {
+//     font-size: 1.1rem;
+//     margin-bottom: 1rem;
+//     color: var(--text-primary);
+//   }
 
-  &:active {
-    background-color: #075e54; /* Even darker green */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transform: translateY(0);
-  }
+//   body.dark & {
+//     background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+//     border-color: rgba(255, 255, 255, 0.1);
 
-  /* Dark mode styles */
-  body.dark & {
-    background-color: #25d366;
-    color: white;
+//     p {
+//       color: var(--text-primary-dark);
+//     }
+//   }
+// `;
 
-    &:hover {
-      background-color: #128c7e;
-      box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
-    }
+// const WhatsAppButton = styled(motion.button)`
+//   background-color: #25d366; /* WhatsApp green */
+//   color: white;
+//   border: none;
+//   padding: 0.75rem 2rem;
+//   border-radius: 8px;
+//   font-weight: 600;
+//   font-size: 1.1rem;
+//   cursor: pointer;
+//   transition: all 0.2s ease-in-out;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 0.5rem;
+//   width: 100%;
 
-    &:active {
-      background-color: #075e54;
-    }
-  }
-`;
+//   &:hover {
+//     background-color: #128c7e; /* Darker WhatsApp green */
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+//     transform: translateY(-1px);
+//   }
+
+//   &:active {
+//     background-color: #075e54; /* Even darker green */
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+//     transform: translateY(0);
+//   }
+
+//   /* Dark mode styles */
+//   body.dark & {
+//     background-color: #25d366;
+//     color: white;
+
+//     &:hover {
+//       background-color: #128c7e;
+//       box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+//     }
+
+//     &:active {
+//       background-color: #075e54;
+//     }
+//   }
+// `;
 
 const NlpWorkshopRegistration = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -332,6 +373,7 @@ const NlpWorkshopRegistration = () => {
         year_of_study: e.target.year.value,
         department: e.target.department.value,
         class: e.target.class.value,
+        cgpa: e.target.cgpa.value,
         mobile_number: e.target.mobile_number.value,
       };
       const response = await fetch("/api/nlp-workshop-register", {
@@ -474,6 +516,16 @@ const NlpWorkshopRegistration = () => {
                   placeholder="Enter your class/slot"
                 />
               </FormGroup>
+
+              <FormGroup>
+                <Label>CGPA</Label>
+                <Input
+                  name="cgpa"
+                  type="text"
+                  required
+                  placeholder="Enter your CGPA"
+                />
+              </FormGroup>
             </FormGrid>
 
             <RainbowButton
@@ -487,6 +539,20 @@ const NlpWorkshopRegistration = () => {
             {error && <ErrorMessage>{error}</ErrorMessage>}
           </Form>
         )}
+
+        <InfoWidget
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <h3>Note</h3>
+          <p>
+            Registration does not guarantee a spot in the workshop. Keep an eye
+            on your inbox, we{"'"}ll send you a confirmation mail if you get
+            shortlisted. You can then proceed to pay Rs.300/- and confirm your
+            spot.
+          </p>
+        </InfoWidget>
 
         {submitSuccess && (
           <SuccessMessage
@@ -508,29 +574,6 @@ const NlpWorkshopRegistration = () => {
             </RainbowButton>
           </SuccessMessage>
         )}
-
-        <WhatsAppWidget
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <p>
-            Join our WhatsApp group for NLP workshop updates and discussions
-          </p>
-          <WhatsAppButton
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() =>
-              window.open(
-                "https://chat.whatsapp.com/GXKDcBPuCpxJGs8KX45VY0",
-                "_blank"
-              )
-            }
-          >
-            <FaWhatsapp size={20} />
-            Join WhatsApp Group
-          </WhatsAppButton>
-        </WhatsAppWidget>
       </ContentContainer>
     </RegistrationSection>
   );
