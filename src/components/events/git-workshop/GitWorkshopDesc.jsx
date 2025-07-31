@@ -480,7 +480,7 @@ const GitWorkshopDesc = () => {
           <InfoCard>
             <Calendar className="w-8 h-8 text-blue-500" />
             <h3 className="text-xl font-semibold">Date</h3>
-            <p>29, 30, 31st July - 2025</p>
+            <p>5, 6, 7 August - 2025</p>
           </InfoCard>
           <InfoCard>
             <Clock className="w-8 h-8 text-blue-500" />
