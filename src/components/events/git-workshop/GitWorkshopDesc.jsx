@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import { DotPattern } from "../../DotPattern";
-import { RainbowButton } from "../../RainbowButton";
+// import { RainbowButton } from "../../RainbowButton";
 import KeerthiImage from "@/assets/events/git-workshop/keerthi_profile.png";
 import BharathImage from "@/assets/events/git-workshop/bharath_profile.png";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import {
   Calendar,
@@ -14,7 +14,7 @@ import {
   BookOpen,
   List,
 } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+// import { FaWhatsapp } from "react-icons/fa";
 
 const EventSection = styled.section`
   padding: 8rem 2rem;
@@ -301,18 +301,6 @@ const MaterialsSection = styled(motion.div)`
   }
 `;
 
-const WidgetsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-`;
-
 const RSVPWidget = styled(motion.div)`
   background: linear-gradient(
     135deg,
@@ -326,37 +314,12 @@ const RSVPWidget = styled(motion.div)`
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
-  p {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
     color: var(--text-primary);
   }
-
-  body.dark & {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-    border-color: rgba(255, 255, 255, 0.1);
-
-    p {
-      color: var(--text-primary-dark);
-    }
-  }
-`;
-
-const WhatsAppWidget = styled(motion.div)`
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05)
-  );
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
   p {
     font-size: 1.1rem;
@@ -368,11 +331,16 @@ const WhatsAppWidget = styled(motion.div)`
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
     border-color: rgba(255, 255, 255, 0.1);
 
+    h3 {
+      color: var(--text-primary-dark);
+    }
+
     p {
       color: var(--text-primary-dark);
     }
   }
 `;
+
 const PulseButton = styled(motion.button)`
   background-color: #1a73e8; /* Google's primary blue */
   color: white;
@@ -413,52 +381,8 @@ const PulseButton = styled(motion.button)`
   }
 `;
 
-const WhatsAppButton = styled(motion.button)`
-  background-color: #25d366;
-  color: white;
-  border: none;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-
-  &:hover {
-    background-color: #128c7e;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    background-color: #075e54;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transform: translateY(0);
-  }
-
-  /* Dark mode styles */
-  body.dark & {
-    background-color: #25d366;
-    color: white;
-
-    &:hover {
-      background-color: #128c7e;
-      box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
-    }
-
-    &:active {
-      background-color: #075e54;
-    }
-  }
-`;
-
 const GitWorkshopDesc = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <EventSection>
@@ -619,50 +543,28 @@ const GitWorkshopDesc = () => {
           </p>
         </MaterialsSection>
 
-        <WidgetsContainer>
-          <RSVPWidget
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+        <RSVPWidget
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h3>Registrations closed!</h3>
+          <p>
+            We{"'"}re sorry. We{"'"}ve reached the maximum capacity for this
+            workshop. Join our community for latest updates on future events
+          </p>
+          <PulseButton
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() =>
+              window.open("https://linktr.ee/GDG_on_Campus_Kare", "_blank")
+            }
           >
-            <p>
-              RSVP in our event page
-              {" (also register below)"}
-            </p>
-            <PulseButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() =>
-                window.open("https://gdg.community.dev/e/mj4m48/", "_blank")
-              }
-            >
-              RSVP
-            </PulseButton>
-          </RSVPWidget>
+            Join us
+          </PulseButton>
+        </RSVPWidget>
 
-          <WhatsAppWidget
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <p>Join our WhatsApp group for updates and discussions</p>
-            <WhatsAppButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() =>
-                window.open(
-                  "https://chat.whatsapp.com/LSTyx32XRYC7zWb0TD8eDZ",
-                  "_blank"
-                )
-              }
-            >
-              <FaWhatsapp size={20} />
-              Join WhatsApp
-            </WhatsAppButton>
-          </WhatsAppWidget>
-        </WidgetsContainer>
-
-        <RainbowButton
+        {/* <RainbowButton
           onClick={() => {
             navigate("/git-workshop/register");
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -670,7 +572,7 @@ const GitWorkshopDesc = () => {
           style={{ width: "100%", marginTop: "2rem" }}
         >
           Register Now
-        </RainbowButton>
+        </RainbowButton> */}
       </ContentContainer>
     </EventSection>
   );
