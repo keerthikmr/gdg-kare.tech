@@ -453,12 +453,12 @@ const NlpWorkshopRegistration = () => {
           <p>
             Registration does not guarantee a spot in the workshop. Keep an eye
             on your inbox, we{"'"}ll send you a confirmation mail if you get
-            shortlisted. You can then proceed to pay Rs.300/- and confirm your
+            shortlisted. You can then proceed to pay Rs. 300/- and confirm your
             spot.
           </p>
 
           <p>
-            3rd year students will also have to attend a preparatory sessions on
+            3rd year students will also have to attend preparatory sessions on
             <b> 11, 12 and 13th August</b> from 5 PM - 6PM.
           </p>
         </InfoWidget>
