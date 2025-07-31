@@ -236,11 +236,14 @@ const ErrorMessage = styled.div`
 `;
 
 const InfoWidget = styled(motion.div)`
+  background: #d0ebf7;
   background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05)
+    90deg,
+    rgba(208, 235, 247, 0.15) 0%,
+    rgba(122, 240, 240, 0.15) 50%,
+    rgba(148, 247, 148, 0.15) 100%
   );
+
   backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 1.5rem;
