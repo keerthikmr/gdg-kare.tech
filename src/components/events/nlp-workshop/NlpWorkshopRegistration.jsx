@@ -261,7 +261,7 @@ const InfoWidget = styled(motion.div)`
 
   p {
     font-size: 1.1rem;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     color: var(--text-primary);
   }
 
@@ -274,6 +274,7 @@ const InfoWidget = styled(motion.div)`
     }
 
     p {
+      margin-bottom: 1rem;
       color: var(--text-primary-dark);
     }
   }
@@ -554,6 +555,11 @@ const NlpWorkshopRegistration = () => {
             on your inbox, we{"'"}ll send you a confirmation mail if you get
             shortlisted. You can then proceed to pay Rs.300/- and confirm your
             spot.
+          </p>
+
+          <p>
+            3rd year students will also have to attend a preparatory sessions on
+            <b> 11, 12 and 13th August</b> from 5 PM - 6PM.
           </p>
         </InfoWidget>
 
