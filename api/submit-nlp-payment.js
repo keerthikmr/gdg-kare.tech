@@ -130,7 +130,7 @@ module.exports = async (req, res) => {
     if (insertError) {
       console.error("Insert error:", insertError);
       // Clean up uploaded file if database insert fails
-      await supabase.storage.from("payment-proofs").remove([fileName]);
+      await supabase.storage.from("nlp-payment-proofs").remove([fileName]);
 
       return res.status(500).json({ error: "Failed to save payment record" });
     }
