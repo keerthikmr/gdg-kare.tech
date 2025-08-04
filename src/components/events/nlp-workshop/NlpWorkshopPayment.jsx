@@ -6,7 +6,7 @@ import { RainbowButton } from "../../RainbowButton";
 import { GlowButton } from "../../GradientGlow";
 import { useNavigate } from "react-router-dom";
 import { FaCheckCircle, FaUpload, FaSpinner } from "react-icons/fa";
-import NLPPayQRImage from "@/assets/events/nlp-workshop/NLPPayQRImage";
+import NLPPayQRImage from "@/assets/events/nlp-workshop/NLPPayQR.jpeg";
 
 const PaymentSection = styled.section`
   min-height: 100vh;
