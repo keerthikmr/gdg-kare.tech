@@ -334,14 +334,45 @@ export const NlpWorkshopPayment = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Registration not found");
+        const errorData = await response.json();
+
+        if (response.status === 404) {
+          // Registration not found
+          setError(
+            <>
+              Registration number not found. Please check your registration
+              number or{" "}
+              <span
+                style={{
+                  color: "var(--medium-blue)",
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  navigate("/nlp-workshop/register");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                register here
+              </span>
+            </>
+          );
+        } else if (response.status === 400) {
+          // Payment already submitted
+          setError(
+            "Payment has already been submitted for this registration number."
+          );
+        } else {
+          setError(errorData.error || "An error occurred. Please try again.");
+        }
+        return;
       }
 
       const data = await response.json();
       setRegistrationData(data);
       setCurrentStep(2);
     } catch {
-      setError("Registration number not found. Please check and try again.");
+      setError("Network error. Please check your connection and try again.");
     } finally {
       setIsLoading(false);
     }
