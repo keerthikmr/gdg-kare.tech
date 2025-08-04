@@ -14,6 +14,7 @@ import GitWorkshopDesc from "../components/events/git-workshop/GitWorkshopDesc";
 import GitWorkshopRegistration from "../components/events/git-workshop/GitWorkshopRegistration";
 import NlpWorkshopDesc from "../components/events/nlp-workshop/NlpWorkshopDesc";
 import NlpWorkshopRegistration from "../components/events/nlp-workshop/NlpWorkshopRegistration";
+import { NlpWorkshopPayment } from "../components/events/nlp-workshop/NlpWorkshopPayment";
 
 export const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: "nlp-workshop/register",
         element: <NlpWorkshopRegistration />,
+      },
+      {
+        path: "nlp-workshop/payment",
+        element: <NlpWorkshopPayment />,
       },
       {
         path: "*",
