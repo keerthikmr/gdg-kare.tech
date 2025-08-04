@@ -110,7 +110,7 @@ module.exports = async (req, res) => {
 
     // Get public URL for the uploaded file
     const { data: urlData } = supabase.storage
-      .from("payment-proofs")
+      .from("nlp-payment-proofs")
       .getPublicUrl(fileName);
 
     // Insert payment record
