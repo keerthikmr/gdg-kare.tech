@@ -625,7 +625,7 @@ export const NlpWorkshopPayment = () => {
 
               <QRSection>
                 <QRImage src={NLPPayQRImage} alt="Payment QR Code" />
-                <QRCaption>Scan to Pay</QRCaption>
+                <QRCaption>Scan Here and pay Rs. 300/-</QRCaption>
               </QRSection>
 
               <form onSubmit={handlePaymentSubmit}>
