@@ -6,6 +6,7 @@ import { RainbowButton } from "../../RainbowButton";
 import { GlowButton } from "../../GradientGlow";
 import { useNavigate } from "react-router-dom";
 import { FaCheckCircle, FaUpload, FaSpinner } from "react-icons/fa";
+import NLPPayQRImage from "@/assets/events/nlp-workshop/NLPPayQRImage";
 
 const PaymentSection = styled.section`
   min-height: 100vh;
@@ -304,6 +305,61 @@ const StepLine = styled.div`
   }
 `;
 
+const QRSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.02)
+  );
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  body.dark & {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.05)
+    );
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+`;
+
+const QRImage = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem;
+  background: white;
+  padding: 0.5rem;
+
+  body.dark & {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
+`;
+
+const QRCaption = styled.p`
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: center;
+
+  body.dark & {
+    color: var(--text-primary-dark);
+  }
+`;
+
 export const NlpWorkshopPayment = () => {
   const [currentStep, setCurrentStep] = useState(1); // 1: verify, 2: payment, 3: success
   const [isLoading, setIsLoading] = useState(false);
@@ -566,6 +622,11 @@ export const NlpWorkshopPayment = () => {
                 Welcome, {registrationData?.name}! Please upload your payment
                 proof and details.
               </p>
+
+              <QRSection>
+                <QRImage src={NLPPayQRImage} alt="Payment QR Code" />
+                <QRCaption>Scan to Pay</QRCaption>
+              </QRSection>
 
               <form onSubmit={handlePaymentSubmit}>
                 <FormGroup>
