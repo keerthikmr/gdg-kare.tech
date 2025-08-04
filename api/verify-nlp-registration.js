@@ -50,7 +50,7 @@ module.exports = async (req, res) => {
     }
 
     // Check if payment already exists for this registration
-    const { data: existingPayment, error: paymentError } = await supabase
+    const { data: existingPayment } = await supabase
       .from("nlp_payments")
       .select("id")
       .eq("registration_id", registration.id)
