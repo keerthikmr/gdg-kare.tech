@@ -83,7 +83,7 @@ module.exports = async (req, res) => {
     }
 
     // Check if payment already exists
-    const { data: existingPayment, error: paymentCheckError } = await supabase
+    const { data: existingPayment } = await supabase
       .from("nlp_payments")
       .select("id")
       .eq("registration_id", registrationId)
@@ -103,7 +103,7 @@ module.exports = async (req, res) => {
 
     const fileBuffer = fs.readFileSync(paymentProofFile.filepath);
 
-    const { data: uploadData, error: uploadError } = await supabase.storage
+    const { error: uploadError } = await supabase.storage
       .from("nlp-payment-proofs")
       .upload(fileName, fileBuffer, {
         contentType: paymentProofFile.mimetype,
