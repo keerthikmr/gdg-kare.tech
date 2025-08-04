@@ -64,6 +64,13 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: "All fields are required" });
     }
 
+    // Validate transaction ID is exactly 12 digits
+    if (!/^\d{12}$/.test(transactionId)) {
+      return res
+        .status(400)
+        .json({ error: "Transaction ID must be exactly 12 digits" });
+    }
+
     // Verify registration exists
     const { data: registration, error: regError } = await supabase
       .from("nlp_workshop_registrations")

@@ -389,6 +389,13 @@ export const NlpWorkshopPayment = () => {
     setIsLoading(true);
     setError("");
 
+    // Validate transaction ID is exactly 12 digits
+    if (!/^\d{12}$/.test(paymentData.transactionId)) {
+      setError("Transaction ID must be exactly 12 digits");
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const formData = new FormData();
       formData.append("paymentProof", paymentData.paymentProof);
@@ -551,15 +558,34 @@ export const NlpWorkshopPayment = () => {
                   <Input
                     type="text"
                     required
-                    placeholder="Enter transaction ID"
+                    placeholder="Enter 12-digit transaction ID"
                     value={paymentData.transactionId}
-                    onChange={(e) =>
-                      setPaymentData((prev) => ({
-                        ...prev,
-                        transactionId: e.target.value,
-                      }))
-                    }
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, ""); // Only allow digits
+                      if (value.length <= 12) {
+                        setPaymentData((prev) => ({
+                          ...prev,
+                          transactionId: value,
+                        }));
+                      }
+                    }}
+                    maxLength={12}
+                    pattern="\d{12}"
+                    style={{
+                      borderColor:
+                        paymentData.transactionId &&
+                        paymentData.transactionId.length !== 12
+                          ? "var(--medium-red)"
+                          : undefined,
+                    }}
                   />
+                  {paymentData.transactionId &&
+                    paymentData.transactionId.length !== 12 && (
+                      <ErrorMessage>
+                        Transaction ID must be exactly 12 digits (currently{" "}
+                        {paymentData.transactionId.length})
+                      </ErrorMessage>
+                    )}
                 </FormGroup>
 
                 <FormGroup>
@@ -644,21 +670,26 @@ export const NlpWorkshopPayment = () => {
               </p>
 
               <InstructionsList>
-                <li>Your payment will be verified within 24-48 hours</li>
-                <li>You will receive an email confirmation once verified</li>
+                <li>
+                  Make sure that you{"'"}ve joined the Agent Speak WhatsApp
+                  group
+                </li>
                 <li>Keep your transaction ID safe for future reference</li>
-                <li>Join our WhatsApp group for updates and announcements</li>
-                <li>Contact us if you receive confirmation within 48 hours</li>
+                <li>
+                  Contact the administrators of the Agent Speak WhatsApp group
+                  if you need assistance
+                </li>
+                <li>Click on the button below to RSVP in our event page</li>
               </InstructionsList>
 
               <RainbowButton
                 onClick={() => {
-                  navigate("/nlp-workshop");
+                  window.open("https://gdg.community.dev/e/mnr9x5/", "_blank");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 style={{ marginTop: "1rem" }}
               >
-                Back to Workshop
+                RSVP
               </RainbowButton>
             </SuccessMessage>
           )}
