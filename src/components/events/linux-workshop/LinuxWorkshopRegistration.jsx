@@ -333,6 +333,17 @@ const LinuxWorkshopRegistration = () => {
         class: e.target.class.value,
         mobile_number: e.target.mobile_number.value,
       };
+
+      const checkResponse = await fetch(
+        `/api/linux-workshop-register?registration_number=${formData.registration_number}`
+      );
+      if (checkResponse.ok) {
+        const checkData = await checkResponse.json();
+        if (checkData.exists) {
+          throw new Error("Registration number already exists");
+        }
+      }
+
       const response = await fetch("/api/linux-workshop-register", {
         method: "POST",
         headers: {
