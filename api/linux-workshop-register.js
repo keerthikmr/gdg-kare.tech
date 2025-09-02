@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
     }
 
     const { data, error } = await supabase
-      .from("event_registrations")
+      .from("linux_workshop_registrations")
       .insert([
         {
           name,
