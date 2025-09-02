@@ -33,6 +33,18 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
+    const existingRegistration = await supabase
+      .from("linux_workshop_registrations")
+      .select("id")
+      .eq("registration_number", registration_number)
+      .single();
+
+    if (existingRegistration.data) {
+      return res
+        .status(400)
+        .json({ error: "Registration number already exists" });
+    }
+
     const { data, error } = await supabase
       .from("linux_workshop_registrations")
       .insert([
