@@ -13,8 +13,8 @@ import SolWorkshopDesc from "../components/events/solution-challenge-workshop/So
 import GitWorkshopDesc from "../components/events/git-workshop/GitWorkshopDesc";
 import GitWorkshopRegistration from "../components/events/git-workshop/GitWorkshopRegistration";
 import NlpWorkshopDesc from "../components/events/nlp-workshop/NlpWorkshopDesc";
-import NlpWorkshopRegistration from "../components/events/nlp-workshop/NlpWorkshopRegistration";
-import { NlpWorkshopPayment } from "../components/events/nlp-workshop/NlpWorkshopPayment";
+import LinuxWorkshopDesc from "../components/events/linux-workshop/LinuxWorkshopDesc";
+import LinuxWorkshopRegistration from "../components/events/linux-workshop/LinuxWorkshopRegistration";
 
 export const router = createBrowserRouter([
   {
@@ -70,12 +70,12 @@ export const router = createBrowserRouter([
         element: <NlpWorkshopDesc />,
       },
       {
-        path: "nlp-workshop/register",
-        element: <NlpWorkshopRegistration />,
+        path: "linux-workshop",
+        element: <LinuxWorkshopDesc />,
       },
       {
-        path: "nlp-workshop/payment",
-        element: <NlpWorkshopPayment />,
+        path: "linux-workshop/register",
+        element: <LinuxWorkshopRegistration />,
       },
       {
         path: "*",
