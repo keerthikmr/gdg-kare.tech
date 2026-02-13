@@ -218,14 +218,12 @@ const EventDescription = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <EventTitle>Prompt Engineering Challenge</EventTitle>
-          <EventCaption>The Art of Prompting</EventCaption>
+          <EventTitle>AI Olympics</EventTitle>
+          <EventCaption>One Arena. One Chance. Conquer with AI.</EventCaption>
           <EventSubtitle>
             A dynamic AI challenge brought to you by Google Developer Groups
-            (GDG) on Campus, KARE. Master the art of prompt engineering in this
-            exciting two-round competition where participants will tackle
-            real-world AI problems using creativity, efficiency, and clarity in
-            AI-generated outputs.
+            (GDG) on Campus, KARE. A thrilling 10-round AI competition where
+            innovation meets real-time challenges.
           </EventSubtitle>
         </EventHeader>
 
@@ -239,7 +237,7 @@ const EventDescription = () => {
           <RainbowButton
             onClick={() => {
               window.open(
-                "https://chat.whatsapp.com/JGGoRbDH0CW05xm1j2DPaK",
+                "https://chat.whatsapp.com/DtE04pqEEQg7f3fF1tfmzn",
                 "_blank"
               );
             }}
@@ -254,22 +252,22 @@ const EventDescription = () => {
           <InfoCard>
             <Calendar className="w-8 h-8 text-blue-500" />
             <h3 className="text-xl font-semibold">Date</h3>
-            <p>March 13, 2025</p>
+            <p>March 13-14, 2025</p>
           </InfoCard>
           <InfoCard>
             <Clock className="w-8 h-8 text-blue-500" />
             <h3 className="text-xl font-semibold">Time</h3>
-            <p>9:30 AM - 3:30 PM</p>
+            <p>9:00 AM - 5:00 PM</p>
           </InfoCard>
           <InfoCard>
             <MapPin className="w-8 h-8 text-blue-500" />
             <h3 className="text-xl font-semibold">Venue</h3>
-            <p>TIFAC Core - Labs 1 & 2</p>
+            <p>8301 Lab, Kalasalingam University</p>
           </InfoCard>
           <InfoCard>
             <Users className="w-8 h-8 text-blue-500" />
             <h3 className="text-xl font-semibold">Participation</h3>
-            <p>Individual</p>
+            <p>2-4 members</p>
           </InfoCard>
         </InfoGrid>
 
@@ -280,7 +278,7 @@ const EventDescription = () => {
         >
           <h2 className="text-3xl font-bold text-center mb-8">
             <Trophy className="inline-block w-8 h-8 mr-2 text-yellow-500" />
-            Prizes Worth ₹10,000
+            Prizes Worth ₹25,000
           </h2>
           <PrizeSection>
             <PrizeCard>
@@ -309,8 +307,8 @@ const EventDescription = () => {
             Scan the QR code or click the button below to register
           </p>
           <p className="mb-6">
-            Look for <HighlightedText>Prompt Engineering</HighlightedText> in
-            the event dropdown
+            Look for <HighlightedText>AI Olympics</HighlightedText> in the event
+            dropdown
           </p>
 
           <ScreenshotContainer
