@@ -283,15 +283,15 @@ const EventDescription = () => {
           <PrizeSection>
             <PrizeCard>
               <h3>🥇 First Prize</h3>
-              <p>₹5,000</p>
+              <p>₹12,000</p>
             </PrizeCard>
             <PrizeCard>
               <h3>🥈 Second Prize</h3>
-              <p>₹3,000</p>
+              <p>₹7,000</p>
             </PrizeCard>
             <PrizeCard>
               <h3>🥉 Third Prize</h3>
-              <p>₹2,000</p>
+              <p>₹6,000</p>
             </PrizeCard>
           </PrizeSection>
         </motion.div>
