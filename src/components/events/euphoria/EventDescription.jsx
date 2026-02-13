@@ -252,7 +252,7 @@ const EventDescription = () => {
           <InfoCard>
             <Calendar className="w-8 h-8 text-blue-500" />
             <h3 className="text-xl font-semibold">Date</h3>
-            <p>March 13-14, 2025</p>
+            <p>March 13-14, 2026</p>
           </InfoCard>
           <InfoCard>
             <Clock className="w-8 h-8 text-blue-500" />
