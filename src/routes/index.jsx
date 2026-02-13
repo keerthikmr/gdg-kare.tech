@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "euphoria-2025/register",
+        path: "ai-olympics",
         element: <EventDescription />,
       },
       {
